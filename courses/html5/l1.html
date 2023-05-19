@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../style/style1.css">
+		<link rel="stylesheet" type="text/css" href="../../style/styleheader.css">
+		<link rel="stylesheet" type="text/css" href="../../style/lessonsstyle.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+				
+		<title>Bliss: онлайн школа языков программирования</title>
+	</head>
+	
+	<body>
+		<header>
+			<div class="logo">
+				<div class="trademark">
+					<a href="../../index.html">Bliss</a>
+				</div>
+				
+				<div class="slogan">
+					— <i>безмятежное обучение программированию</i>
+				</div>
+			</div>
+			
+			<div class="mobilemenu" tabindex="1"><a>/Меню/</a></div>
+			
+			<div class="menu">
+				<a href="../../index.html">/О нас/</a>
+				<a href="../../html/courses.html"  class="currentpage">/Курсы/</a>
+				<a href="../../html/contacts.html">/Контакты/</a>
+				<a href="../../html/log.html" id="getinacc">/Войти/</a>
+				<a href="../../html/cab.html" id="cabbutton">/Личный кабинет/</a>
+				<a href="../../html/adminpage.html" id="adminpage">/Управление/</a>
+				<a id="exit">/Выйти/</a>
+			</div>
+			
+			<script src="../../js/mobilemenu.js"></script>
+			
+			<div id="userinfo">Вы вошли как <a id="userlogin">гость</a></div>
+			
+			<script src="../../js/getuserlogin.js"></script>
+			<script src="../../js/scriptforbuttons.js"></script>
+			
+		</header>
+		
+		<div class="maincontainer">
+			<div class="content">
+				<div class="zagolovok">
+					<div class="bread"><a href="../../html/courses.html">Курсы</a> > <a href="../../courses/html5/htmlmain.html">Курс по HTML</a> > Урок 1</div>
+					<p id="zglvk">Урок 1. Структура HTML-документа. Теги</p>
+				</div>
+				
+				<div class="page">
+					<p>Основа основ любого языка программирования - понимание его структуры. Язык HTML - язык разметки гипертекста, и, в общем-то, не является языком <i>программирования</i> как таковым. Скорее это язык, содержащий строительные кирпичики для оформления гипертекста - теги.
+					<p><u><b>Тег</b></u> - буквально "метка", "ярлык". Это - то, из чего и состоит весь HTML. Теги обозначают границы разных элементов страницы или один элемент. Записываются они так: <имяТега>. Имя тега - всегда какое-то одно слово или буква, написанное без пробелов или других знаков. Со временем вы выучите много тегов!
+					<p>Основу HTML-документа составляет несколько важных <i>не повторяющихся</i> тегов: <b>html</b>, <b>head</b> и <b>body</b>. И если тег head можно оставить пустым, то без наполнения тегов html и body не будет и самой страницы!
+					<p>Тег <b>html</b> обозначает начало страницы на языке HTML. Без него браузер просто не поймёт, что ваш документ - именно страница на языке разметки гипертекста, а не просто какой-то текст. Также сама страница должна сохраняться с расширением .html.
+					<p>Тег <b>head</b> нужен для записи важнейшей информации о странице. Например, её название (то, что написано на открытой вкладке - и есть имя страницы), автор, мета-теги (они нужны для поиска страницы в поисковиках). Также через этот тег к странице подключают стили. Если вы хотите побольше узнать о стилях - ознакомьтесь с нашим <a href="../css/cssmain.html">курсом</a>!
+					<p>Наконец, тег <b>body</b> - самый важный для нас, ведь именно он содержит "тело" документа. Вся информация на странице, всё, что вы видите и с чем можете взаимодействовать, находится именно здесь.
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<div class="question">Проверьте себя!
+						<p>
+						<label>Поставьте правильные скобки вокруг имени тега:
+							<br>
+							<input type="text" id="vopros01" class="tinyinput" pattern="<" maxlength="1" required>
+							имяТега
+							<input type="text" id="vopros02" class="tinyinput" pattern=">" maxlength="1" required>
+						</label>
+						
+						<p>
+						<label>В этот тег записывается название страницы, мета-теги, автор:
+							<br>
+							<input type="text" id="vopros1" class="smallinput" pattern="head|HEAD|Head" maxlength="4" required>
+						</label>
+						
+						<p>
+						<label>Этот тег содержит всю информацию на странице, с которой мы можем взаимодействовать:
+							<br>
+							<input type="text" id="vopros2" class="smallinput" pattern="body|BODY|Body" maxlength="4" required>
+						</label>
+						
+						<p>
+						<label>Этот тег даёт браузеру понять, что перед ним именно HTML-документ:
+							<br>
+							<input type="text" id="vopros3" class="smallinput" pattern="html|HTML|Html" maxlength="4" required>
+						</label>
+						
+						<p>Считается ли HTML языком программирования?
+							<br>
+							<br>
+							<input type="radio" id="q41" name="q4"><label for="q41">Да</label>
+							<input type="radio" id="q42" name="q4" class="corrad"><label for="q42">Нет</label>
+							<br>
+							<br>
+						</p>
+						<button id="showme1" class="show" onClick="show1()">Показать ответы</button>
+						<button id="hideme1" class="hide" onClick="hide1()">Скрыть ответы</button>
+					</div>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>Теги бывают <u>одиночными</u> и <u>парными</u>.
+					<p><b>Одиночные</b> теги состоят лишь из одной части и выглядят они как <имяТега>. Они обозначают какой-то один самостоятельный элемент страницы. Например, тег  <u>&lt;img&gt;</u> нужен для вставки изображения на страницу, а тег <u>&lt;input&gt;</u> может принять вид текстового поля, кнопки, переключателя или флажка.
+					<p><b>Парные</b> теги состоят из двух половинок. Первая выглядит как <имяТега>, а вторая как &lt;/имяТега>. Вторая половина отличается лишь наличием косой черты перед именем. Парные теги составляют большую часть языка HTML! Например, те самые важнейшие теги html, head и body - парные.
+					<p>Наличие косой черты очень важно для закрытия тега, иначе браузер подумает, что весь текст дальше всё ещё находится внутри вашего не закрытого тега. А если не закрыть теги html, head и body, то страница и вовсе может не отобразиться в браузере.
+					<p><img src="img/l1/ex1.png" class="rightsmlimg" title="Внешний вид основы HTML-документа">Теги, отвечающие за контент на странице, могут быть расположены как угодно внутри тега body. Но сами теги html, head и body должны идти в строгом порядке друг за другом, как на примере справа.
+					<br>
+					И запомните: почти все теги на странице могут использоваться несколько раз, но теги html, head и body пишутся только <b>один</b> раз!
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<div class="question">Проверьте себя!
+						<p>
+							<label>
+							Закройте тег html.
+							<br>
+							&lt;html><<input type="text" id="vopros4" class="smallinput" pattern="/html" maxlength="5" required>>
+							</label>
+					
+						<p>
+							Какой из этих тегов одиночный?
+							<br><br>
+							<input type="radio" name="vopros5" id="vopros51">
+							<label for="vopros51">head</label>
+							
+							<input type="radio" name="vopros5" id="vopros52">
+							<label for="vopros52">html</label>
+							
+							<input type="radio" class="corrad" name="vopros5" id="vopros53">
+							<label for="vopros53">img</label>
+							
+							<input type="radio" name="vopros5" id="vopros54">
+							<label for="vopros54">body</label>
+						
+						<p>
+							Расставьте правильный порядок главных тегов на странице:
+							<br>
+							<br>
+							<input type="text" id="vopros61" class="tinyinput" pattern="2" maxlength="1" required>
+							<label for="vopros61">&lt;head&gt;</label>
+							<br>
+							<br>
+							<input type="text" id="vopros62" class="tinyinput" pattern="6" maxlength="1" required>
+							<label for="vopros62">&lt;/html></label>
+							<br>
+							<br>
+							<input type="text" id="vopros63" class="tinyinput" pattern="4" maxlength="1" required>
+							<label for="vopros63">&lt;body&gt;</label>
+							<br>
+							<br>
+							<input type="text" id="vopros64" class="tinyinput" pattern="1" placeholder="1" maxlength="1" required>
+							<label for="vopros64">&lt;html></label>
+							<br>
+							<br>
+							<input type="text" id="vopros65" class="tinyinput" pattern="5" maxlength="1" required>
+							<label for="vopros65">&lt;/body&gt;</label>
+							<br>
+							<br>
+							<input type="text" id="vopros66" class="tinyinput" pattern="3" maxlength="1" required>
+							<label for="vopros66">&lt;/head&gt;</label>
+						</p>
+						<button id="showme2" class="show" onClick="show2()">Показать ответы</button>
+						<button id="hideme2" class="hide" onClick="hide2()">Скрыть ответы</button>
+					</div>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>Как же запомнить, какие теги когда можно открывать, а когда нельзя?
+					<p>Сравните их с бутербродом!
+					<p>
+						<img src="img/l1/burg10.png">
+						<img src="img/l1/ex2.png" class="rightsmlimg" title="Структура документа: добавление тегов input и img">
+						Представьте, что каждый слой продуктов - определённый тег. На данной картинке булочка играет роль парного тега body, начинающегося сверху и заканчивающегося снизу. Мы хотим, чтобы внутри этого body были одиночные теги input и img - поэтому булочка их как бы оборачивает вокруг, чётко обозначая, что начинка находится внутри неё. Выглядит довольно просто, не правда ли?
+						
+					
+					<p>Немного усложним начинку нашего бутерброда и добавим ещё один парный тег - <u>&lt;div&gt;</u>, обозначающий блок информации. В этом блоке могут быть картинки, текст, кнопки, в общем - всё, что угодно!
+					<p>
+						<img src="img/l1/burg21.png" class="rightimg">
+						<img src="img/l1/ex3.png" class="smlimg" title="Структура документа: добавление блока div">
+						Предположим, что мы хотим положить нашу картинку img и текстовое поле input внутрь нового блока div.
+						Очевидно, что начинаться наш div должен внутри body - ведь вся информация на странице находится именно в нём. А так как мы хотим, чтобы img и input находились внутри div, то и заканчиваться этот блок будет сразу после наших элементов. Посмотрите, как теперь это выглядит: листик салата начинается после начала булочки body, а заканчивается до её конца.
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>А что, если мы захотим добавить ещё элементов?
+					<p>
+						<img src="img/l1/burg22.png">
+						Посмотрите: наш бутерброд стал совсем большой. Мы добавили парочку новых одиночных элементов - <u>&lt;br&gt;</u>, обозначающий перенос строки, и <u>&lt;hr&gt;</u>, добавляющий горизонтальную черту на странице.
+						<br>
+						<img src="img/l1/ex4.png" class="rightsmlimg" title="Структура документа: добавление тегов br и hr">
+						Как вы помните, все теги, связанные с контентом, должны быть внутри body, поэтому тег hr мы решили положить после блока, чтобы подчеркнуть его окончание. А тег br мы захотели посадить внутрь div, чтобы после начала блока шла пустая строка, а уже после неё - текстовое поле и картинка.
+						<br>
+						Текстовое описание расположения блоков выглядит довольно объёмно, но посмотрите на сам код - он совсем крошечный!
+					<p> Возможно, повторяя код, написанный у нас, вы открывали его в браузере и думали - почему картинки нет, если стоит тег img? На самом деле, чтобы что-то появилось, недостаточно одних только тегов (за исключением некоторых одиночных, как hr и br) - нужны <i>атрибуты</i> тегов. А о них мы поговорим с вами в следующем уроке!
+					</p>
+				</div>
+				
+				<div class="bottomthings">
+					<button id="prevlesson">Все уроки</button>
+					<button id="prev">Назад</button>
+					<p id="current">Страница 1 из 6</p>
+					<button id="next">Вперёд</button>
+					<button id="nextlesson">Урок 2</button>
+					<script src="../../js/pagesswitch.js"></script>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+		
+			prevlessonbutton.addEventListener("click", prevles);
+			nextlessonbutton.addEventListener("click", nextles);
+			
+			function nextles() {
+				let go = confirm("Вы точно хотите начать следующий урок?");
+				if (go == true) {
+					document.location = "l2.html";
+				}
+			}
+				
+			function prevles() {
+				let go = confirm("Вы точно хотите вернуться к списку уроков?");
+				if (go == true) {
+					document.location = "htmlmain.html";
+					}
+			}
+				
+			function show1() {
+				document.getElementById("vopros01").placeholder = "<";
+				document.getElementById("vopros02").placeholder = ">";
+				document.getElementById("vopros1").placeholder = "head";
+				document.getElementById("vopros2").placeholder = "body";
+				document.getElementById("vopros3").placeholder = "html";
+				document.getElementById("q42").checked = true;
+				document.getElementById("showme1").style.display = "none";
+				document.getElementById("hideme1").style.display = "inline-block";
+			}
+				
+			function hide1() {
+				document.getElementById("vopros01").placeholder = "";
+				document.getElementById("vopros02").placeholder = "";
+				document.getElementById("vopros1").placeholder = "";
+				document.getElementById("vopros2").placeholder = "";
+				document.getElementById("vopros3").placeholder = "";
+				document.getElementById("q42").checked = false;
+				document.getElementById("showme1").style.display = "inline-block";
+				document.getElementById("hideme1").style.display = "none";
+			}
+				
+			function show2() {
+				document.getElementById("vopros4").placeholder = "/html";
+				document.getElementById("vopros53").checked = true;
+				document.getElementById("vopros61").placeholder = "2";
+				document.getElementById("vopros62").placeholder = "6";
+				document.getElementById("vopros63").placeholder = "4";
+				document.getElementById("vopros64").placeholder = "1";
+				document.getElementById("vopros65").placeholder = "5";
+				document.getElementById("vopros66").placeholder = "3";
+				document.getElementById("showme2").style.display = "none";
+				document.getElementById("hideme2").style.display = "inline-block";
+			}
+				
+			function hide2() {
+				document.getElementById("vopros4").placeholder = "";
+				document.getElementById("vopros53").checked = false;
+				document.getElementById("vopros61").placeholder = "";
+				document.getElementById("vopros62").placeholder = "";
+				document.getElementById("vopros63").placeholder = "";
+				document.getElementById("vopros64").placeholder = "";
+				document.getElementById("vopros65").placeholder = "";
+				document.getElementById("vopros66").placeholder = "";
+				document.getElementById("showme2").style.display = "inline-block";
+				document.getElementById("hideme2").style.display = "none";
+			}	
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/style1.css">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/stylelog.css">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/styleheader.css">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/popup.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<title>Восстановление пароля - Bliss: онлайн школа языков программирования</title>
+	</head>
+	
+	<body>
+		<header>
+			<div class="logo">
+				<div class="trademark">
+					<a href="http://bliss/index.html">Bliss</a>
+				</div>
+				
+				<div class="slogan">
+					— <i>безмятежное обучение программированию</i>
+				</div>
+			</div>
+			
+			<div class="mobilemenu" tabindex="1"><a>/Меню/</a></div>
+			
+			<div class="menu">
+				<a href="http://bliss/index.html">/О нас/</a>
+				<a href="http://bliss/html/courses.html">/Курсы/</a>
+				<a href="http://bliss/html/contacts.html">/Контакты/</a>
+				<a href="http://bliss/html/log.html" id="getinacc" class="currentpage">/Войти/</a>
+				<a href="http://bliss/html/cab.html" id="cabbutton">/Личный кабинет/</a>
+				<a href="http://bliss/html/adminpage.html" id="adminpage">/Управление/</a>
+				<a id="exit">/Выйти/</a>
+			</div>
+			
+			<script src="http://bliss/js/mobilemenu.js"></script>
+			
+			<script src="http://bliss/js/scriptforbuttons.js"></script>
+			
+		</header>
+		
+		<div class="maincontainer">
+			<div id="popup" class="popup">
+				<div id="innermessage">
+					<p id="msg"></p>
+					<p id="timer"></p>
+					<p id="logout">Если переадресация не произошла, перейдите по <a href="log.html">ссылке</a></p>
+				</div>
+			</div>
+			
+			<div class="content">
+				<h1>Восстановление пароля</h1>
+				<form method="post" id="frm">
+					<label>Логин:</label>
+						<input type="text" name="log" id="log" pattern="^[A-zА-яЁё0-9][\wА-яЁё]{2,20}$" maxlength="20" autocomplete="off" required>
+						
+						<span id="s1"></span>
+					
+					<label>Почта:</label>
+						<input type="email" name="mail" id="mail" pattern="[a-zA-Z\d][a-zA-Z\d._-]{1,}@[a-z\d]{2,}\.[a-z]{2,}" maxlength="40" autocomplete="off" required>
+						
+						
+						<span id="s2"></span>
+					
+					<label>Новый пароль:</label>
+						<input type="password" name="pass" id="pass" pattern="(?=.{8,}$)(?=.*[\d])(?=.*[A-zА-яЁё])(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).*" minlength="8" maxlength="20" required>
+						
+						<span id="s3"></span>
+						
+					<label>Повторите новый пароль:</label>
+						<input type="password" name="pass2" id="pass2" pattern="(?=.{8,}$)(?=.*[\d])(?=.*[A-zА-яЁё])(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).*" minlength="8" maxlength="20" required>
+						
+						<span id="s4"></span>
+						
+					
+					<center><input type="submit" value="Сохранить" name="send" id="send"></center>
+				</form>
+				
+			</div>
+		</div>
+		
+		<script>
+			//Регулярные выражения для сверки корректности логина, пароля и почты
+			logreg = /^[A-zА-яЁё0-9][\wА-яЁё]{2,20}$/;
+			pasreg = /(?=.{8,}$)(?=.*[\d])(?=.*[A-zА-яЁё])(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).*/;
+			mailreg = /^[a-zA-Z\d][a-zA-Z\d._-]{1,}@[a-z\d]{2,}\.[a-z]{2,}$/;
+			
+			var frm = document.querySelector("#frm");
+			var log = document.querySelector("#log");
+			var pass = document.querySelector("#pass");
+			var pass2 = document.querySelector("#pass2");
+			var mail = document.querySelector("#mail");
+			var send = document.querySelector("#send");
+			
+			var popup = document.querySelector("#popup");
+			var msg = document.querySelector("#msg");
+			var tmr = document.querySelector("#timer");
+			var logout = document.querySelector("#logout");
+			
+			var s1 = document.querySelector("#s1");
+			var s2 = document.querySelector("#s2");
+			var s3 = document.querySelector("#s3");
+			var s4 = document.querySelector("#s4");
+			
+			log.addEventListener("change", logcheck);
+			mail.addEventListener("change", emailcheck);
+			pass.addEventListener("change", passcheck);
+			pass2.addEventListener("change", passmatch);
+			
+			send.addEventListener("click", setandunset);
+			send.addEventListener("click", logcheck);
+			send.addEventListener("click", emailcheck);
+			send.addEventListener("click", passcheck);
+			send.addEventListener("click", passmatch)
+			send.addEventListener("click", popupmsg);
+			
+			//Для правильной работы ajax-запросов убираем стандартные
+			//события форм при отправке (очистка, перезагрузка страницы)
+			frm.addEventListener("submit", function(e) { e.preventDefault();});
+			
+			
+			//Вспомогательная функция - удаление стандартных тайтлов над полями форм
+			function nobubble(field) {
+				return function(e) {
+					if (!field.validity.valid) {
+						e.preventDefault();
+						field.focus();
+					}
+				}
+			}
+			//Функция, распределяющая удаление тайтлов по полям формы
+			function setandunset() {
+				switch (true) {
+					case !log.validity.valid:
+						frm.addEventListener('invalid', nobubble(log), true);
+						frm.removeEventListener('invalid', nobubble(pass), true);
+						frm.removeEventListener('invalid', nobubble(pass2), true);
+						frm.removeEventListener('invalid', nobubble(mail), true);
+						break;
+					case log.validity.valid&&!mail.validity.valid:
+						frm.removeEventListener('invalid', nobubble(log), true);
+						frm.removeEventListener('invalid', nobubble(pass), true);
+						frm.removeEventListener('invalid', nobubble(pass2), true);
+						frm.addEventListener('invalid', nobubble(mail), true);
+						break;
+					case log.validity.valid&&!pass.validity.valid:
+						frm.removeEventListener('invalid', nobubble(log), true);
+						frm.addEventListener('invalid', nobubble(pass), true);
+						frm.removeEventListener('invalid', nobubble(pass2), true);
+						frm.removeEventListener('invalid', nobubble(mail), true);
+						break;
+					case log.validity.valid&&!pass2.validity.valid:
+						frm.removeEventListener('invalid', nobubble(log), true);
+						frm.removeEventListener('invalid', nobubble(pass), true);
+						frm.addEventListener('invalid', nobubble(pass2), true);
+						frm.removeEventListener('invalid', nobubble(mail), true);
+						break;
+					case log.validity.valid&&pass.validity.valid&&pass2.validity.valid&&mail.validity.valid:
+						frm.removeEventListener('invalid', nobubble(log), true);
+						frm.removeEventListener('invalid', nobubble(pass), true);
+						frm.removeEventListener('invalid', nobubble(pass2), true);
+						frm.removeEventListener('invalid', nobubble(mail), true);
+						break;
+				}
+			}
+			
+			//Ajax-запрос и функция на проверку логина
+			var logexists = "";
+			
+			function logcheck(){
+				let ajlog = $.ajax({
+					url: "http://bliss/php/logcheck.php",
+					type: "POST",
+					data: $('form').serialize(),
+					dataType: "text",
+				})
+				
+				ajlog.done(function(response) {
+					logexists = response;
+						
+					if (log.value=="" || log.value=="NULL" || log.value==0) {
+						log.setCustomValidity('Введите логин');
+						log.style.borderColor = "rgb(249, 139, 139)";
+						log.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s1.style.color = "rgb(181, 59, 59)";
+						s1.innerHTML = "Введите логин";
+					}
+				
+					else if (logreg.test(log.value)==false) {
+						log.setCustomValidity('Минимальная длина - 3 символа. Логин должен начинаться с буквы или цифры. Допустимы буквы русского и латинского алфавита, цифры и знак подчёркивания');
+						log.style.borderColor = "rgb(249, 139, 139)";
+						log.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s1.style.color = "rgb(181, 59, 59)";
+						s1.innerHTML = "Минимальная длина - 3 символа. <br>Логин должен начинаться с буквы или цифры. <br> Допустимы буквы русского и латинского алфавита; <br>Цифры и знак подчёркивания";
+					}
+						
+					else if (logexists=='Пользователь не найден!') {
+						log.setCustomValidity('Логин занят!');
+						log.style.borderColor = "rgb(249, 139, 139)";
+						log.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s1.style.color = "rgb(181, 59, 59)";
+						s1.innerHTML = logexists;
+					}
+							
+					else  { 
+						log.setCustomValidity('');
+						log.style.borderColor = "rgb(116, 252, 118)";
+						log.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(116, 252, 118, .5))";
+						s1.style.color = "rgb(100, 193, 102)";
+						s1.innerHTML = "";
+					}
+				})
+			}
+			
+			//Ajax-запрос и функция на проверку почты
+			var mailcor = "";
+			
+			function emailcheck(){
+				let ajmail = $.ajax({
+					url: "http://bliss/php/mailcheck.php",
+					type: "POST",
+					data: $('form').serialize(),
+					dataType: "text",
+				})
+				
+				ajmail.done(function(response) {
+					mailcor = response;
+			
+					if (mail.value=="" || mail.value=="NULL" || mail.value==0) {
+						mail.setCustomValidity('Введите адрес почты');
+						mail.style.borderColor = "rgb(249, 139, 139)";
+						mail.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s2.innerHTML = "Введите почтовый адрес";
+					}
+						
+					else if (mailreg.test(mail.value)==false){ 
+						mail.setCustomValidity('Введите корректный почтовый адрес');
+						mail.style.borderColor = "rgb(249, 139, 139)";
+						mail.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s2.innerHTML = "Введите корректный почтовый адрес";
+					}
+						
+					else if (mailcor == "Неверная почта!"){ 
+						mail.setCustomValidity('Неверная почта!');
+						mail.style.borderColor = "rgb(249, 139, 139)";
+						mail.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s2.innerHTML = mailcor;
+					}
+						
+					else { 
+						mail.setCustomValidity('');
+						mail.style.borderColor = "rgb(116, 252, 118)";
+						mail.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(116, 252, 118, .5))";
+						s2.innerHTML = "";
+					}
+				})
+			}
+			
+			//Ajax-запрос и функция на проверку пароля
+			var passcor = "";
+			
+			function passcheck(){
+				let aj = $.ajax({
+					url: "http://bliss/php/passcheck.php",
+					type: "POST",
+					data: $('form').serialize(),
+					dataType: "text",
+				})
+				
+				aj.done(function(response) {
+					passcor = response;
+					
+					if (!log.validity.valid) {
+						pass.setCustomValidity('Сначала введите верный логин');
+						pass.style.borderColor = "rgb(249, 139, 139)";
+						pass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s3.innerHTML = "Сначала введите верный логин";
+					}
+					
+					else if (pass.value=="" || pass.value=="NULL" || pass.value==0) {
+						pass.setCustomValidity('Введите пароль');
+						pass.style.borderColor = "rgb(249, 139, 139)";
+						pass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s3.innerHTML = "Введите пароль";
+					}
+					
+					else if (pasreg.test(pass.value)==false){ 
+						pass.setCustomValidity('Неверный формат пароля');
+						pass.style.borderColor = "rgb(249, 139, 139)";
+						pass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s3.innerHTML = "Неверный формат пароля";
+					}
+					
+					else if (passcor=="") {
+						pass.setCustomValidity('Новый пароль совпадает со старым');
+						pass.style.borderColor = "rgb(249, 139, 139)";
+						pass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s3.innerHTML = 'Новый пароль совпадает со старым';
+					}
+					
+					else { 
+						pass.setCustomValidity('');
+						pass.style.borderColor = "rgb(116, 252, 118)";
+						pass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(116, 252, 118, .5))";
+						s3.innerHTML = "";
+					}
+				})
+			}
+			
+			
+			//Проверка, совпадают ли оба введённых пароля
+			function passmatch() {
+				
+				if (!log.validity.valid) {
+					pass2.setCustomValidity('Сначала введите верный логин');
+					pass2.style.borderColor = "rgb(249, 139, 139)";
+					pass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s3.innerHTML = "Сначала введите верный логин";
+				}
+					
+				else if (pass2.value=="" || pass2.value=="NULL" || pass2.value==0) {
+					pass2.setCustomValidity('Повторите пароль');
+					pass2.style.borderColor = "rgb(249, 139, 139)";
+					pass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s4.innerHTML = "Повторите пароль";
+				}
+				
+				else if (pasreg.test(pass.value)==false){
+					pass2.setCustomValidity('Введите пароль в соответствии с форматом');
+					pass2.style.borderColor = "rgb(249, 139, 139)";
+					pass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s4.innerHTML = "Введите пароль в соответствии с форматом";
+				}
+				
+				else if (pasreg.test(pass.value)==true){
+				
+						
+					if (passcor=="") {
+						pass2.setCustomValidity('Новый пароль совпадает со старым');
+						pass2.style.borderColor = "rgb(249, 139, 139)";
+						pass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s4.innerHTML = 'Новый пароль совпадает со старым';
+					}
+					
+					else if (pass.value!=pass2.value) {
+						pass2.setCustomValidity('Пароли не совпадают');
+						pass2.style.borderColor = "rgb(249, 139, 139)";
+						pass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s4.innerHTML = "Пароли не совпадают";
+					}
+											
+					else { 
+						pass2.setCustomValidity('');
+						pass2.style.borderColor = "rgb(116, 252, 118)";
+						pass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(116, 252, 118, .5))";
+						s4.innerHTML = "";
+					}
+				}
+			}
+			
+			var sec = 3;
+			
+			//Отправка формы на сервер, если она прошла все проверки
+			function popupmsg() {
+				if (log.validity.valid && pass.validity.valid && pass2.validity.valid && mail.validity.valid) {
+					var ajrestorepass = $.ajax({
+						url: "http://bliss/php/passrestore.php",
+						type: "POST",
+						data: $('form').serialize(),
+						dataType: "text",
+					})
+					
+					ajrestorepass.done(function(response) {
+						popup.style.display = "flex";
+						msg.innerHTML = response;
+						
+						if (response == "Пароль успешно изменён.") {
+							msg.innerHTML+=" Больше не забывайте его :)";
+							tmr.innerHTML = "Вы будете автоматически перенаправлены на страницу авторизации через "+sec+" секунд.";
+							
+							logout.style.display = "block";
+							
+							function schetchik() {
+								sec--;
+								tmr.innerHTML = "Вы будете автоматически перенаправлены на страницу авторизации через "+sec+" секунд.";
+								if (sec==0) {
+									location.replace("log.html");
+								}
+							};
+							setInterval(schetchik, 1000);
+						}
+						
+						else {
+							msg.innerHTML+="<br>Обновите страницу и попробуйте снова. Если ошибка не исправляется, обратитесь к администратору.";
+						}
+					})
+				}
+			}
+		</script>
+	</body>
+</html>

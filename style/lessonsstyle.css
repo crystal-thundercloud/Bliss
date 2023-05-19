@@ -1,0 +1,377 @@
+/********************ЗАГОЛОВОК, ХЛЕБНЫЕ КРОШКИ, НАЗВАНИЕ УРОКА********************/
+.zagolovok {
+	text-align: center;
+	font-size: 2vmax;
+	width: 100%;
+	border-radius: 30px 30px 0px 0px;
+}
+
+.bread {
+	margin: 3% 2% 2% 2%;
+	text-align: left;
+	font-size: 1vmax;
+	border-bottom: 1px solid #939393;
+}
+
+.bread>a:visited {
+	color: blue;
+}
+
+.zagolovok >  p {
+	margin: 2% 2% 0% 2%;
+	border-bottom: 2px solid black;
+}
+
+/********************СТРАНИЦЫ********************/
+.page {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	align-content: space-between;
+	width: 100%;
+	height: 100%;
+	text-align: justify;
+	font-size: 1.3vmax;
+	background: linear-gradient(rgba(118, 168, 247, .3), rgba(104, 207, 255, .3));
+	word-break: break-word;
+}
+
+.page p {
+	margin: 2%;
+}
+
+.hiddenpage {
+	display: none;
+}
+
+/********************НАПОЛНЕНИЕ СТРАНИЦ********************/
+
+.cols2 {
+	column-count: 2;
+}
+
+.nwrp {
+	font-weight: 700;
+	white-space: nowrap;
+}
+
+.bcs {
+	display: none;
+	margin: 2%;
+	background: rgba(255, 255, 255, .4);
+	border: 3px solid white;
+	box-shadow: 3px 3px 3px black;
+}
+
+/********************ИЗОБРАЖЕНИЯ********************/
+p img {
+	margin: .5%;
+	float: left;
+	min-width: 5%;
+	max-width: 20%;
+}
+
+.rightimg {
+	float: right;
+}
+
+.smlimg {
+	min-width: 10%;
+}
+
+.rightsmlimg {
+	min-width: 10%;
+	float: right;
+}
+
+/********************СТРАНИЦЫ С ТЕСТАМИ********************/
+
+/********************АБЗАЦЫ НА СТРАНИЦАХ С ТЕСТАМИ********************/
+.question {
+	margin: 3% 0%;
+	width: 100%;
+	text-align: center;
+}
+
+.question p {
+	width: 95%;
+	padding: 1% 0%;
+	border-top: 2px solid white;
+}
+
+.question p:last-of-type {
+	border-bottom: 3px dashed white;
+}
+
+/********************ТЕКСТОВЫЕ ПОЛЯ********************/
+input {
+	font-size: 1.3vmax;
+	text-align: center;
+}
+
+.giantinput {
+	width: 90%;
+}
+
+.largeinput {
+	width: 70%;
+}
+
+.biginput {
+	width: 50%;
+}
+
+.mediuminput {
+	width: 30%;
+}
+
+.smallinput {
+	width: 20%;
+}
+
+.teenyinput {
+	width: 15%;
+}
+
+.tinyinput {
+	width: 10%;
+}
+
+input:invalid {
+	background: rgba(249, 139, 139, .9);
+	border: 2px inset rgb(249, 139, 139);
+}
+
+input:not([type="image"]):not([type="button"]):not([type="submit"]):not([type="reset"]):valid {
+	background: #aaedae;
+	border: 2px inset green;
+}
+
+/********************РАДИО********************/
+input[type="radio"]:not(.exrd) {
+	display: none;
+}	
+
+input[type="radio"]+label {
+	padding: .5%;
+	background: rgba(255, 255, 255, .5);
+	border: 3px solid white;
+	border-radius: 30px;
+	box-shadow: 3px 3px 3px black;
+	transition: all .2s;
+}
+
+input[type="radio"]:not(:checked)+label:hover {
+	color: #347dbc;
+	background: rgba(155, 155, 155, .5);
+	box-shadow: 3px 3px 3px black;
+}
+
+input[type="radio"]:not(:checked):active+label:active {
+	background: rgba(50, 50, 50, .4);
+	color: white;
+	box-shadow: none;
+}
+
+input[type="radio"]:not(.corrad):checked+label {
+	background: rgba(249, 139, 139, .9);
+	border: 3px solid rgb(209, 99, 99);
+	box-shadow: none;
+}
+
+.corrad:checked+label {
+	background: #aaedae;
+	border: 3px solid #559d55;
+	box-shadow: none;
+}
+
+
+/********************ЧЕКБОКСЫ********************/
+input[type="checkbox"]:not(.exchck) {
+	opacity: 0;
+}
+
+input[type="checkbox"]:not(.exchck):not(.corchck)+label::before, .corchck+label::before {
+	content: "✓";
+	color: transparent;
+	border: 2px outset blue;
+	background: rgba(255, 255, 255, .5);
+}
+
+input[type="checkbox"]:not(.exchck):not(.corchck):checked+label::before {
+	content: "✓";
+	color: gray;
+	border: 2px inset rgb(249, 139, 139);
+	background: rgba(249, 139, 139, .9);
+}
+
+input[type="checkbox"]:not(.exchck):not(:checked):hover+label::before {
+	border: 2px outset blue;
+	background: rgba(155, 155, 155, .5);
+}
+
+input[type="checkbox"]:not(.exchck):active+label:active::before {
+	border: 2px inset blue;
+	color: transparent;
+	background: rgba(50, 50, 50, .4);
+}
+
+.corchck:checked+label::before {
+	content: "✓";
+	color: green;
+	background: #aaedae;
+	border: 2px inset green;
+}
+
+/********************КНОПКИ********************/
+button {
+	font-size: 1.3vw;
+}
+
+.show {
+	background: #aaedae;
+}
+
+.show:active {
+	background: #8fc693;
+}
+
+.hide {
+	display: none;
+	background: #e5de95;
+}
+
+.hide:active {
+	background: #bbb67c
+}
+
+/********************НИЗ СТРАНИЦ********************/
+.bottomthings {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	width: 100%;
+	user-select: none;
+	-webkit-user-select: none;
+	font-size: 1.3vmax;
+	border-radius: 0px 0px 30px 30px;
+	background: linear-gradient(rgba(132, 233, 237, .3), rgba(104, 255, 224, .3));
+}
+
+/********************КНОПКИ НИЗА СТРАНИЦ********************/
+#prev, #next, #nextlesson, #prevlesson {
+	width: 25%;
+	font-size: 1.3vmax;
+}
+
+#next, #nextlesson {
+	border-radius: 30px 0px 30px 0px;
+}
+
+#prev {
+	display: none;
+}
+
+#prev, #prevlesson {
+	border-radius: 0px 30px 0px 30px;
+}
+
+#nextlesson {
+	display: none;
+}
+
+/********************ДРУГОЕ********************/
+
+
+
+
+
+
+
+/********************(от 1000 до 1500 пикселей)********************/
+@media all and ((max-width: 1500px) and (min-width: 1350px)) {
+
+	.zagolovok {
+		font-size: 2vmax;
+	}
+	
+	.bread {
+		font-size: 1vmax;
+	}
+	
+	.page, input, button, .bottomthings, #prev, #next, #nextlesson, #prevlesson {
+		font-size: 1.7vmax;
+	}
+
+}
+
+/********************(от 700 до 1350 пикселей)********************/
+@media all and ((max-width: 1350px) and (min-width: 900px)) {
+
+	.zagolovok {
+		font-size: 2.5vmax;
+	}
+	
+	.bread {
+		font-size: 1.5vmax;
+	}
+	
+	.page, input, button, .bottomthings, #prev, #next, #nextlesson, #prevlesson {
+		font-size: 2vmax;
+	}
+
+}
+
+/********************(от 600 до 900 пикселей)********************/
+@media all and ((max-width: 900px) and (min-width: 600px)) {
+
+	.zagolovok {
+		font-size: 3vmax;
+	}
+	
+	.bread {
+		font-size: 2vmax;
+	}
+	
+	.page, input, button, .bottomthings, #prev, #next, #nextlesson, #prevlesson {
+		font-size: 2.3vmax;
+	}
+
+	p img {
+		float: left;
+		min-width: 20%;
+		max-width: 30%;
+	}
+	
+}
+
+/********************(до 600 пикселей)********************/
+@media all and (max-width: 600px){
+
+	.zagolovok {
+		font-size: 3.5vmax;
+	}
+	
+	.bread {
+		font-size: 2.5vmax;
+	}
+	
+	.page, input, button, .bottomthings {
+		font-size: 2.8vmax;
+	}
+	
+	#next, #prev {
+		font-size: 2vmax;
+	}
+	
+	#prevlesson, #nextlesson  {
+		font-size: 2vmax;
+	}
+
+	p img {
+		float: left;
+		min-width: 30%;
+		max-width: 50%;
+	}
+
+}

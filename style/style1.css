@@ -1,0 +1,131 @@
+* {
+	outline: none;
+}
+
+html {
+	scrollbar-color: rgba(255, 255, 255, .5) rgb(155, 206, 255);
+}
+
+body {
+	background: scroll rgb(155, 206, 255) url(../img/Bliss.jpg) center no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	font-size: 1.2vmax;
+	margin: 0;
+	min-height: 100vh;
+	overflow-x: hidden;
+	box-sizing: border-box;
+	font-family: TimesNewRoman;
+}
+
+.maincontainer {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	min-height: 95vh;
+	padding: 2%;
+	background: rgba(200, 200, 255, .2);
+	position: relative;
+}
+
+.content {
+	display: flex;
+	min-width: 35%;
+	max-width: 70%;
+	flex-flow: column;
+	align-items: center;
+	background: linear-gradient(rgba(255, 255, 255, .5), rgba(155, 206, 255, .5));
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, .5);
+	border-radius: 30px;
+	border-right: 5px solid;
+	border-bottom: 5px solid;
+	border-color: rgba(104, 207, 255, .3);
+	backdrop-filter: blur(10px);
+}
+
+textarea, input:not([type="image"]):not([type="button"]):not([type="submit"]):not([type="reset"]) {
+	font-family: Tahoma;
+}
+
+button, input[type=button], input[type=submit] {
+	font-family: cursive;
+	background: #5fb7e2;
+	border: 3px solid white !important;
+	box-shadow: 3px 3px 3px black;
+	min-height: 30px;
+}
+
+
+button:active, input[type=submit]:active, input[type=button]:active {
+	border: 3px inset #5fb7e2;
+	background: #4297bf;
+	box-shadow: none;
+}
+
+button:disabled, input[type=button]:disabled, input[type=submit]:disabled {
+	box-shadow: none;
+}
+
+@media all and (max-width: 1500px) and (min-width: 1000px) {
+
+.content {
+	min-width: 60%;
+}
+
+}
+
+@media all and (max-width: 1000px) and (min-width: 700px) {
+
+.content {
+	min-width: 70%;
+}
+
+}
+
+@media all and (max-width: 700px) and (min-width: 500px) {
+
+.content {
+	min-width: 80%;
+}
+
+}
+
+@media all and (max-width: 500px) {
+
+.content {
+	min-width: 90%;
+}
+
+}
+
+/********************(от 1000 до 1500 пикселей)********************/
+@media all and ((max-width: 1500px) and (min-width: 1350px)) {
+
+	.content {
+		font-size: 1.2vmax;
+	}
+}
+
+/********************(от 700 до 1350 пикселей)********************/
+@media all and ((max-width: 1350px) and (min-width: 900px)) {
+
+.content {
+		font-size: 1.6vmax;
+	}
+}
+
+/********************(от 600 до 900 пикселей)********************/
+@media all and ((max-width: 900px) and (min-width: 600px)) {
+
+.content {
+		font-size: 2.2vmax;
+	}
+}
+
+/********************(до 600 пикселей)********************/
+@media all and (max-width: 600px) {
+
+.content {
+		font-size: 2.5vmax;
+	}
+}

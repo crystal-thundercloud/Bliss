@@ -1,0 +1,113 @@
+.content {
+	padding: 2%;
+	justify-content: space-around;
+	text-align: center;
+}
+
+.content form {
+	width: 90%;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2%;
+	background: rgba(255, 255, 255, .5);
+	border-radius: 30px;
+}
+
+input[type=text] {
+	float: right;
+	height: 1.5em;
+	width: 60%;
+	margin: 1%;
+	padding: 2%;
+	font-size: 1em;
+	background: linear-gradient(rgba(255, 255, 255, .7), rgba(155, 206, 255, .7));
+	border: 3px solid #5fb7e2;
+	border-radius: 30px;
+	box-sizing: border-box;
+}
+
+textarea {
+	float: right;
+	height: 18vw;
+	width: 60%;
+	max-width: 100%;
+	margin: 1%;
+	padding: 2%;
+	font-size: 1em;
+	background: linear-gradient(rgba(255, 255, 255, .7), rgba(155, 206, 255, .7));
+	border: 3px solid #5fb7e2;
+	border-radius: 5px;
+	box-sizing: border-box;
+	scrollbar-width: thin;
+}
+
+#usingsigns {
+	text-align: left;
+	width: 60%;
+}
+
+input[type=submit] {
+	font-size: 1.5vmax;
+	min-width: 40%;
+	margin: 2%;
+	padding: 1%;
+	border-radius: 30px;
+	border: 3px outset #5fb7e2;
+	background: #5fb7e2;
+}
+
+input[type=submit]:active {
+	border: 3px inset #5fb7e2;
+	background: #4297bf;
+}
+
+
+/********************(от 1600 до 1900 пикселей)********************/
+@media all and ((max-width: 1900px) and (min-width: 1600px)) {
+
+input[type=submit] {
+	font-size: 1.5vmax;
+}
+
+}
+
+/********************(от 1400 до 1600 пикселей)********************/
+@media all and ((max-width: 1600px) and (min-width: 1400px)) {
+
+input[type=submit] {
+	font-size: 2vmax;
+}
+
+}
+
+/********************(от 1000 до 1400 пикселей)********************/
+@media all and ((max-width: 1400px) and (min-width: 1000px)) {
+
+input[type="text"], textarea {
+	width: 80%;
+}
+
+input[type=submit] {
+	font-size: 2vmax;
+}
+
+}
+
+/********************(до 1000 пикселей)********************/
+@media all and (max-width: 1000px) {
+
+input[type="text"], textarea {
+	width: 100%;
+}
+
+textarea {
+	height: 30vh;
+}
+
+input[type=submit] {
+	font-size: 3vmax;
+}
+
+}

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../style/style1.css">
+		<link rel="stylesheet" type="text/css" href="../../style/styleheader.css">
+		<link rel="stylesheet" type="text/css" href="../../style/lessonsstyle.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+				
+		<title>Bliss: онлайн школа языков программирования</title>
+	</head>
+	
+	<body>
+		<header>
+			<div class="logo">
+				<div class="trademark">
+					<a href="../../index.html">Bliss</a>
+				</div>
+				
+				<div class="slogan">
+					— <i>безмятежное обучение программированию</i>
+				</div>
+			</div>
+			
+			<div class="mobilemenu" tabindex="1"><a>/Меню/</a></div>
+			
+			<div class="menu">
+				<a href="../../index.html">/О нас/</a>
+				<a href="../../html/courses.html" class="currentpage">/Курсы/</a>
+				<a href="../../html/contacts.html">/Контакты/</a>
+				<a href="../../html/log.html" id="getinacc">/Войти/</a>
+				<a href="../../html/cab.html" id="cabbutton">/Личный кабинет/</a>
+				<a href="../../html/adminpage.html" id="adminpage">/Управление/</a>
+				<a id="exit">/Выйти/</a>
+			</div>
+			
+			<script src="../../js/mobilemenu.js"></script>
+			
+			<div id="userinfo">Вы вошли как <a id="userlogin">гость</a></div>
+			
+			<script src="../../js/getuserlogin.js"></script>
+			<script src="../../js/scriptforbuttons.js"></script>
+			
+		</header>
+		
+		<div class="maincontainer">
+			<div class="content">
+				<div class="zagolovok">
+					<div class="bread"><a href="../../html/courses.html">Курсы</a> > <a href="../../courses/html5/htmlmain.html">Курс по HTML</a> > Урок 4</div>
+					<p id="zglvk">Урок 4. Форматы ввода текста.</p>
+				</div>
+				
+				<div class="page">
+					<p>В прошлом уроке мы с вами узнали о теге input и вариантах его внешнего вида, изменяемых с помощью атрибута type, а также коротко обговорили то, что встроенные методы HTML далеко не всегда способны правильно распознать вводимый текст в соответствии с нашими ожиданиями.
+					<p>В этом уроке мы обсудим атрибуты input, влияющие на максимальную и минимальную длину вводимого текста, и об атрибуте, задающем формулу вводимого текста, и разберём основы составления таких формул. Также узнаем об уникальных атрибутах типа number, которые влияют на то, какие числа можно вводить и даже на какое значение они должны отличаться друг от друга.
+					<p>Заниматься мы с вами будем input с типом text, но информация из этого урока также подойдёт и для типов email, password, search и url - в общем, для любых, создающих текстовые поля.
+					</p>
+				</div>
+
+				<div class="page hiddenpage">
+					<p>А начнём мы с изучения атрибутов, регулирующих длину текста в теге input. Их имена - <b>minlength</b> и <b>maxlength</b>, отвечают они, соответственно, за минимальную и максимальную длину вводимого текста в символах. Каждый символ (включая пробел) учитывается. Если вы хотите, скажем, добавить валидацию для ввода логина при регистрации - пропишите нужную вам минимальную длину, чтобы у пользователя не было логина, состоящего из двух-трёх символов.
+					<p>Вот пример: у этого поля атрибут minlength имеет значение "5", и пока вы не введёте 5 символов, поле не будет валидным.
+					<p><input type="text" minlength="5" placeholder="текст от 5 символов" required>
+					<p>Атрибут minlength полезен, например, если это атрибут поля формы заполнения информации об ошибке в программе. Действительно, нельзя же, жалуясь на какую-то ошибку, не описать её? Сообщение с этим атрибутом может быть длиной от заданного значения и до бесконечности. Наверное, это удобно для пользователя (можно писать сколько угодно!), но не очень - для сервера, ведь его вместимость ограничена. Если каждый пользователь будет писать по 5000 символов в сообщении, то разработчик просто не сможет вовремя всё прочитать, а на сервере место кончится очень быстро. Чтобы этого не случилось, существует атрибут <b>maxlength</b>, который ограничивает количество вводимых символов.
+					<p><input type="text" maxlength="15" placeholder="не более 15 символов" required>
+					<p>В это поле можно вписать от 1 до 15 символов, хотя отмечено только максимальное их количество. Всё дело в атрибуте <b>required</b>, который не позволяет оставить поле пустым и требует хотя бы 1 символ. Но если нам нужно, чтобы было более чем 1 символ - мы задаём оба параметра длины.
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>Максимум и минимум можно задать также и для поля типа number, но в этом случае атрибуты сокращаются и имеют вид <b>min</b> и <b>max</b> и означают минимальное и максимальное значение вводимого числа. Поле не будет валидным, если вы с клавиатуры введёте значение за заданными границами. Это ограничение в первую очередь регулирует стрелки поля number, которые перестают увеличивать или уменьшать значение после заданных границ. Для удобства использования на мобильных телефонах, многие браузеры на которых пока не поддерживают стрелки, мы добавили кнопки увеличения и уменьшения значения во всех полях типа number на нашем сайте.
+					<p>Вот пример: в этом поле нижняя граница - 20, верхняя - 100. При достижении этих значений кнопки перестают изменять число в поле.
+					<p>
+						<input type="number" id="nmb1" class="mediuminput" min="20" value="20" max="100" required>
+						<button id="add1" class="smallinput">+</button>
+						<button id="dcln1" class="smallinput">-</button>
+					<p>Но у поля типа number есть ещё один уникальный атрибут - <b>step</b>. Он отвечает за шаг, на который число может увеличиваться или уменьшаться при нажатии стрелок, и понимает, когда введённое с клавиатуры число не является результатом сложения нескольких шагов.
+					<p>Этому полю step задан со значением 5. Любое число, не делящееся на 5 без остатка, будет считаться невалидным.
+					<p>
+						<input type="number" id="nmb2" step="5" value="0" class="biginput" required>
+						<button id="add2" class="smallinput">+</button>
+						<button id="dcln2" class="smallinput">-</button>
+					<p>Кстати, атрибут step может иметь и дробное значение. У поля ниже шаг равен 1.7 (и в разных браузерах результат будет отображён по-разному).
+					<p>
+						<input type="number" id="nmb3" class="mediuminput" step="1.7" value="0" required>
+						<button id="add3" class="smallinput">+</button>
+						<button id="dcln3" class="smallinput">-</button>
+					<p>Обратите внимание: дробная часть всегда задаётся через точку, а не через запятую! Многие браузеры отображают десятичные дроби с запятой, но их значение в системе записано с точкой. Если в шаг поставить запятую, то дробная часть не будет учитываться.
+					<p>Зачастую для полей типа number задают все три атрибута - и максимум, и минимум, и шаг. По умолчанию значения в поле могут быть от минус бесконечности до плюс бесконечности, а шаг равен единице.
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>Ну а теперь снова вернёмся к полям ввода текста, а не чисел. Просим любить и жаловать - атрибут <b>pattern</b> собственной персоной! Именно в этот атрибут записывается "формула" текста, который можно вводить. Его значением может быть набор слов или символов, называемый <i>регулярным выражением</i>.
+					<p>И вот вам первый пример: <text class="nwrp">pattern="привет"</text>. Данное поле не станет валидным, пока в него не будет записано слово "привет", причём именно в нижнем регистре.
+					<p><input type="text" pattern="привет" placeholder="привет" required>
+					<p>Текстовые значения атрибута pattern чувствительны к регистру. Если вы напишете в атрибуте "привет", а в поле ввода - "ПРИВЕТ", оно будет невалидным. Чтобы позволить ввести в поле несколько значений, используются <b>логические связки</b>. В отношении простого ввода нескольких вариантов слов испольуется связка "или", которая выглядит, как вертикальная черта <b>|</b>. Она означает, что из двух (или более) выражений должно быть выбрано хотя бы одно.
+					<p>
+						В этом поле возможен ввод любого из трёх вариантов: "привет", "ПРИВЕТ" или "Привет". Вот, как выглядит это выражение:
+						<b>"привет|Привет|ПРИВЕТ"</b>
+						<br>
+						Как видите, между словами и связкой "или" нет пробелов, иначе и их тоже надо будет ввести, чтобы поле было валидным. Порядок самих слов не имеет значения!
+					<p><input type="text" pattern="привет|Привет|ПРИВЕТ" placeholder="Привет" required>
+					<p>
+						Pattern учитывает все символы, кроме тех, что специально зарезервированы в качестве служебных, как та же вертикальная черта. Но что, если нам надо, чтобы в поле была эта самая черта? Pattern посчитает её частью вводимого текста, если мы её <b>экранируем</b>. Экранирование - это фактически отделение служебного символа с помощью, как ни странно, ещё одного служебного символа - обратной косой черты <b>\</b>. Эта черта означает, что ровно один стоящий после неё специальный символ также обязателен для ввода. Давайте попробуем с нашим выражением и экранируем обе вертикальные черты. Код будет выглядеть вот так:
+						<b>"привет\|Привет\|ПРИВЕТ"</b>
+						<br>
+						Тогда конечный input будет требовать ввода текста "привет|Привет|ПРИВЕТ".
+					<p><input type="text" pattern="привет[|]Привет[|]ПРИВЕТ" placeholder="привет|Привет|ПРИВЕТ" required>
+ 					<p>Если же из двух вертикальный черт мы экранируем только первую, то получится, что поле ввода примет текст "привет|Привет" или же одно слово "ПРИВЕТ".
+					<p><input type="text" pattern="привет\|Привет|ПРИВЕТ" placeholder="ПРИВЕТ" required>
+					<p>Кстати, если вы путаетесь, когда нужно экранировать много <i>отдельных</i> символов, вместо косой черты можете требуемый символ заключить в квадратные скобки. Так, записи <text class="nwrp">привет\|Привет\|ПРИВЕТ</text> и <text class="nwrp">привет[|]Привет[|]ПРИВЕТ</text> равнозначны.
+						<ul style="text-align:left"><b>Вот все служебные символы:</b><br><br>
+							<li>Скобки
+								<ul>
+									<li>круглые <b>()</b>
+									<li>квадратные <b>[]</b>
+									<li>фигурные <b>{}</b>
+									<li>знаки "больше" <b>></b> и "меньше" <b><</b>
+								</ul>
+							<li>чёрточки
+								<ul>
+									<li>косая черта (слеш) <b>/</b>
+									<li>обратная косая черта (обратный слеш) <b>\</b>
+									<li>вертикальная черта |
+								</ul>
+							<li>карет <b>^</b>
+							<li>точка <b>.</b>
+							<li>звёздочка <b>*</b>
+							<li>плюс <b>+</b>
+							<li>вопросительный знак <b>?</b>
+							<li>знак доллара <b>$</b>.
+						</ul>
+					<p>Если вам нужно будет, чтобы пользователь ввёл и эти символы - не забудьте их экранировать!
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<div class="question">Проверьте себя!
+						<p>
+							Введите любой текст в данное поле <input type="text" class="mediuminput" minlength="5" maxlength="11" pattern="([^A-Z]?[a-zА-Яа-яЁё]{1,11})" required> и ответьте на вопросы:
+							<br>
+							1. Какова минимальная длина вводимого в это поле текста?
+							<br>
+							<input type="text" id="q11" class="smallinput" pattern="5" required>
+							<br>
+							2. Какова максимальная длина вводимого в это поле текста?
+							<br>
+							<input type="text" id="q12" class="smallinput" pattern="11" required>
+							<br>
+							3. Можно ли вводить в это поле латинские буквы?
+							<br>
+							<br>
+							<input type="radio" name="q13" id="q131"><label for="q131">Только в верхнем регистре</label>
+							<br>
+							<br>
+							<input type="radio" name="q13" id="q132" class="corrad"><label for="q132">Только в нижнем регистре</label>
+							<br>
+							<br>
+							<input type="radio" name="q13" id="q133"><label for="q133">Можно вводить только цифры</label>
+						<p>
+							На сайте заказчика есть форма, в которой можно ответить на вопрос "какие животные нравятся вам больше всего?". Заказчик хочет, чтобы можно было ввести только ответы "собаки", "кошки", "кролики", "попугаи". Выберете правильное значение атрибута pattern, соответствующего этому требованию.
+							<br>
+							<br>
+							<input type="radio" name="q2" id="q21">
+							<label for="q21">кошки|кролики|рыбки</label>
+							<br>
+							<br>
+							<input type="radio" name="q2" id="q22">
+							<label for="q22">попугаи[|]собаки[|]кролики</label>
+							<br>
+							<br>
+							<input type="radio" name="q2" id="q23">
+							<label for="q23">собаки|лошади|попугаи|кошки</label>
+							<br>
+							<br>
+							<input type="radio" name="q2" id="q24" style="margin: 0">
+							<label for="q24">собаки|кошки\|кролики|попугаи</label>
+							<br>
+							<br>
+							<input type="radio" name="q2" id="q25" class="corrad">
+							<label for="q25">кролики|попугаи|кошки|собаки</label>
+						<p>Какие из нижеперечисленных символов являются служебными?
+						<p class="cols2" style="text-align:left;border-top:none;">
+							<input type="checkbox" id="q31" class="corchck">
+							<label for="q31">звёздочка *</label>
+							<br>
+							<input type="checkbox" id="q32">
+							<label for="q32">воск. знак !</label>
+							<br>
+							<input type="checkbox" id="q33">
+							<label for="q33">амперсанд &</label>
+								<br>
+							<input type="checkbox" id="q34" class="corchck">
+							<label for="q34" class="corchck">точка .</label>
+							<br>
+							<input type="checkbox" id="q35">
+							<label for="q35">запятая ,</label>
+							<br>
+							<input type="checkbox" id="q36">
+							<label for="q36">тильда ~</label>
+							<br>
+							<input type="checkbox" id="q37">
+							<label for="q37">равно =</label>
+							<br>
+							<input type="checkbox" id="q38" class="corchck">
+							<label for="q38">вопр. знак ?</label>
+							<br>
+							<input type="checkbox" id="q39" class="corchck">
+							<label for="q39">скобки ()</label>
+						</p>
+						<button id="showme1" class="show" onClick="show1()">Показать ответы</button>
+						<button id="hideme1" class="hide" onClick="hide1()">Скрыть ответы</button>
+					</div>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>Но что делать, если вам нужно ввести не какие-то определённые слова, а определённый набор символов? Всем знакомы предложения по типу "пароль должен содержать как минимум одну заглавную и одну строчную букву, цифру и специальный символ", и для создания такого условия и существуют паттерны.
+					<p>Как мы узнали ранее, квадратные скобки могут обозначать символ, рекомендуемый ко вводу, но также они существуют для обозначения множества разных символов, причём есть специальные обозначения, использующие дефис. Обозначение для любых цифр - <text class="nwrp">[0-9]</text>. Для букв обозначение выглядит как <text class="nwrp">[A-z]</text> - ввод заглавных или строчных букв латинского алфавита и <text class="nwrp">[А-яЁё]</text> - ввод заглавных или строчных букв кириллического алфавита. Обратите внимание на то, что буква ё не считается частью алфавита, поэтому её приходится вписывать отдельно, причём как заглавную, так и строчную. Это правило работает для любых букв вне встроенного набора HTML. Например, многие буквы украинской азбуки придётся вписывать отдельно, если вы хотите, чтобы ввод осуществлялся только на украинском языке.
+					<br>
+					Когда вам нужно вписать какой-то один символ из набора символов, вы просто можете написать эти символы друг за другом в квадратных скобках: запись <text class="nwrp">pattern="[24abc]"</text> означает, что в поле можно вписать что-то одно из данного набора - цифру 2, цифру 4, букву a, букву b или букву c. Если вы для удобства отделите символы запятыми - <text class="nwrp">pattern="[2,4,a,b,c]"</text> - то запятая также станет рекомендованной ко вводу. Ну а если вы хотите, чтобы дефис также был рекомендуем ко вводу, и не обозначал какой-то набор символов, то напишите его в самом конце скобок: <text class="nwrp">pattern="[24abc-]"</text>.
+					<p>Посмотрите на это поле. Значение его паттерна - <text class="nwrp">"[A-zА-яЁё]"</text>.
+					<p><input type="text" pattern="[А-яЁёA-z]" placeholder="Ы" required>
+					<p>Поле становится валидным, если введена любая буква латинского или русского алфавита, и невалидным, если вводится специальный символ или цифра. Но почему поле становится невалидным при вводе двух и более букв? Всё дело в том, что контент внутри квадратных скобок по умолчанию предполагается введённым ровно один раз. А вот мы хотим, чтобы пользователь ввёл, скажем, от 2 до 5 букв. Мы можем использовать атрибуты minlenght и maxlenght, но что, если нам нужно ввести ещё что-то, кроме этих пяти букв? Ограничение на максимальную длину поля в данном случае нам не позволит что-то ещё написать.
+					<p>Для того, чтобы обозначить, сколько раз должны вводиться символы в скобках, либо одиночный символ, используются фигурные скобки, в которые вписывается одно или два числа (через запятую). Первое число обозначает минимальное количество предыдущих символов либо скобок, второе - максимальное. Фигурные скобки ставятся ПОСЛЕ закрытия квадратных или круглых скобок, либо сразу после нужного символа.
+					<p>В этом поле атрибут pattern имеет значение <text class="nwrp">"[A-zА-яЁё]{2,5}"</text>. Обратите внимание: в фигурных скобках после запятой пробела нет - иначе весь паттерн будет проигнорирован.
+					<p><input type="text" pattern="[А-яЁёA-z]{2,5}" placeholder="NyaНя" required>
+					<p>
+						Как видите, после становится валидным при вводе двух букв, и перестаёт быть валидным при вводе шести. А теперь немного изменим паттерн и оставим в фигурных скобках только число 2: <text class="nwrp">"[A-zА-яЁё]{2}"</text>.
+					<p><input type="text" pattern="[А-яЁёA-z]{2}" placeholder="gО" required>
+					<p>
+						Теперь поле принимает только две буквы, не больше и не меньше. А есть ещё один формат записи чисел в фигурных скобках: <text class="nwrp">"[А-яЁёA-z]{5,}"</text>.
+					<p><input type="text" pattern="[А-яЁёA-z]{5,}" placeholder="Каrtoшkа" required>
+					<p>Эта запись означает, что символов из квадратных скобок может быть от пяти и более, вплоть до бесконечности (если максимальная длина текста в поле позволяет, конечно).
+					<p>Фигурные скобки могут стоять в любом месте выражения (но не в квадратных скобках) и будут прекрасно работать как надо. Например, поле с паттерном <text class="nwrp">"1{2}[А-яЁё]{3,}"</text> посчитает валидным текст, в котором сначала будет написано две единицы, а потом - от трёх и до бесконечности заглавных или строчных букв кириллического алфавита.
+					<p><input type="text" pattern="1{2}[А-яЁё]{3,}" placeholder="11пЕчЕнЕк" required>
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>Для удобства записи регулярных выражений используется <i>группировка</i>, производимая при помощи круглых скобок. Группировка позволяет объединять несколько частей паттерна и применять к ним фигурные скобки. Например, у нас есть следующая запись: <text class="nwrp">"[A-z][А-я][Ёё]{2,5}"</text>. Что в ней происходит? Сначала в ней идёт ровно одна заглавная или строчная буква латинского алфавита, затем - одна заглавная или строчная буква кириллического, а затем - от двух до пяти заглавных или строчных букв Ё. Но что, если мы хотим, чтобы у нас было от двух до пяти сочетаний из одной буквы кириллического алфавита и одной буквы ё? На помощь приходят круглые скобки: <text class="nwrp">"[A-z]([А-я][Ёё]){2,5}"</text>.
+					<p><input type="text" pattern="[A-z]([А-я][Ёё]){2,5}" placeholder="bУёЪёыЁ" required>
+					<p>Круглые скобки сгруппировали символы внутри них и фигурные теперь воспринимают их вместе! Для понятности можно добавить символы после букв (не забудьте экранировать точку!): <text class="nwrp">"[A-z]-([А-я][Ёё]\.){2,5}"</text>.
+					<p><input type="text" pattern="[A-z]-([А-я][Ёё]\.){2,5}" placeholder="b-Уё.Ъё.ыЁ." required>
+					<p>Круглые скобки, как вы можете помнить, тоже являются служебным символом, и тоже могут экранироваться обратным слешем и квадратными скобками. В квадратных скобках внутри них даже можно что-то написать, и это совершенно не повлияет на вводимый текст. Следующий паттерн наглядно это демонстрирует: <text class="nwrp">"[A-z(0-9)]{5}"</text>. Это поле примет на ввод сочетания из пяти заглавных или строчных букв латинского алфавита, открывающих скобок, любых цифр и закрывающих скобок.
+					<p><input type="text" pattern="[A-z(0-9)]{5}" placeholder="(aga)" required>
+					<p>Экранирование обратным слешем удобно, например, для кода телефонного номера - скобки могут быть обязательны для ввода, но сперва их обе нужно экранировать: <text class="nwrp">"8\([0-9]{3}\)"</text>.
+					<p><input type="text" pattern="8\([0-9]{3}\)" placeholder="8(495)" required>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>Обозначить количество вводимых символов можно и иначе, для этого существуют специальные символы, которые пишутся ПОСЛЕ закрытия квадратных или круглых скобок.
+					<p>Первый символ - знак вопроса <b>?</b>. Он означает, что предыдущий символ, либо символы в предыдущих квадратных или круглых скобках, могут встречаться ровно один раз, либо не встречаться вовсе. Добавим цифры и попробуем посадить после них вопросительный знак: <text class="nwrp">"[0-9]?[А-яЁёA-z]{2,6}"</text>.
+					<p><input type="text" pattern="[0-9]?[А-яЁёA-z]{2,6}" placeholder="5Colь" required>
+					<p>Данная запись означает, что в вводимом тексте должна сначала быть ровно одна цифра (либо ни одной), после которой идут буквы, количество которых должно быть от 2 до 6. Если цифры будет две, то поле станет невалидным.
+					<p>Второй символ - плюс <b>+</b>. Он означает, что предыдущий символ, либо символы в предыдущих квадратных или круглых скобках, могут встречаться ровно один раз или более. Отсутствие символа сделает поле невалидным. <text class="nwrp">"[0-9]+[А-яЁёA-z]{2,6}"</text>.
+					<p><input type="text" pattern="[0-9]+[А-яЁёA-z]{2,6}" placeholder="405лNмоH" required>
+					<p>Это поле примет любой текст, в котором сначала идёт цифра (или несколько цифр), а затем от двух до шести букв.
+					<p>Третий и последний символ - звёздочка <b>*</b>. Она означает, что предыдущий символ, либо символы в предыдущих квадратных или круглых скобках, могут встречаться в тексте любое количество раз (а могут и не встречаться вовсе).
+					<p>Все эти специальные символы также успешно экранируются. Вот слегка изменённый пример для кода телефонного номера с вариацией: можно написать в начале 8, а можно +7. Символ плюса необходимо экранировать, чтобы пользователь мог его ввести: <text class="nwrp">"(8|\+7)\([0-9]{3}\)"</text>.
+					<p><input type="text" pattern="(8|\+7)\([0-9]{3}\)" placeholder="+7(495)" required>
+					<p>В следующем уроке мы немного поговорим о специальных символах, заменяющих стандартные обозначения для букв и цифр, а также попробуем составить более сложные регулярные выражения.
+					</p>
+				</div>
+				<div class="bottomthings">
+					<button id="prevlesson">Урок 3</button>
+					<button id="prev">Назад</button>
+					<p id="current"></p>
+					<button id="next">Вперёд</button>
+					<button id="nextlesson">Урок 5</button>
+					<script src="../../js/pagesswitch.js"></script>
+				</div>
+			</div>
+		</div>
+		
+		<script src="../../js/adddcln.js"></script>
+		<script>
+			prevlessonbutton.addEventListener("click", prevles);
+			nextlessonbutton.addEventListener("click", nextles);
+			
+			function nextles() {
+				let go = confirm("Вы точно хотите начать следующий урок?");
+				if (go == true) {
+					document.location = "l5.html";
+					}
+				}
+			
+			function prevles() {
+				let go = confirm("Вы точно хотите вернуться к предыдущему уроку?");
+				if (go == true) {
+					document.location = "l3.html";
+					}
+				}
+			
+			function show1() {
+				document.getElementById("q11").placeholder = "5";
+				document.getElementById("q12").placeholder = "11";
+				document.getElementById("q132").checked = true;
+				document.getElementById("q25").checked = true;
+				document.getElementById("q31").checked = true;
+				document.getElementById("q32").checked = false;
+				document.getElementById("q33").checked = false;
+				document.getElementById("q34").checked = true;
+				document.getElementById("q35").checked = false;
+				document.getElementById("q36").checked = false;
+				document.getElementById("q37").checked = false;
+				document.getElementById("q38").checked = true;
+				document.getElementById("q39").checked = true;
+				document.getElementById("showme1").style.display = "none";
+				document.getElementById("hideme1").style.display = "inline-block";
+				}
+			
+			function hide1() {
+				document.getElementById("q11").placeholder = "";
+				document.getElementById("q12").placeholder = "";
+				document.getElementById("q132").checked = false;
+				document.getElementById("q25").checked = false;
+				document.getElementById("q31").checked = false;
+				document.getElementById("q32").checked = false;
+				document.getElementById("q33").checked = false;
+				document.getElementById("q34").checked = false;
+				document.getElementById("q35").checked = false;
+				document.getElementById("q36").checked = false;
+				document.getElementById("q37").checked = false;
+				document.getElementById("q38").checked = false;
+				document.getElementById("q39").checked = false;
+				document.getElementById("showme1").style.display = "inline-block";
+				document.getElementById("hideme1").style.display = "none";
+				}
+			
+			var add1 = document.querySelector("#add1");
+			var add2 = document.querySelector("#add2");
+			var add3 = document.querySelector("#add3");
+			var dcln1 = document.querySelector("#dcln1");
+			var dcln2 = document.querySelector("#dcln2");
+			var dcln3 = document.querySelector("#dcln3");
+			
+			var perem1 = '';
+			var perem11 = '';
+			function addval1() {
+				addval(100, 1, '#nmb1');
+			}
+			
+			var perem2 = '';
+			var perem22 = '';
+			function addval2() {
+				addval(1000000000, 5, '#nmb2');
+			}
+			
+			var perem3 = '';
+			var perem33 = '';
+			function addval3() {
+				addval(1000000000, 1.7, '#nmb3');
+			}
+			
+			function dclnval1() {
+				dclnval(20, 1, '#nmb1');
+			}
+			
+			function dclnval2() {
+				dclnval(-1000000000, 5, '#nmb2');
+			}
+			
+			function dclnval3() {
+				dclnval(-1000000000, 1.7, '#nmb3');
+			}
+			
+			add1.addEventListener("click", addval1);
+			add1.addEventListener("mousedown", function(){perem1=setInterval(addval1, 100);});
+			add1.addEventListener("mouseup", function(){clearInterval(perem1);});
+			add1.addEventListener("blur", function(){clearInterval(perem1);});
+			
+			add2.addEventListener("click", addval2);
+			add2.addEventListener("mousedown", function(){perem2=setInterval(addval2, 100);});
+			add2.addEventListener("mouseup", function(){clearInterval(perem2);});
+			add2.addEventListener("blur", function(){clearInterval(perem2);});
+			
+			add3.addEventListener("click", addval3);
+			add3.addEventListener("mousedown", function(){perem3=setInterval(addval3, 100);});
+			add3.addEventListener("mouseup", function(){clearInterval(perem3);});
+			add3.addEventListener("blur", function(){clearInterval(perem3);});
+			
+			dcln1.addEventListener("click", dclnval1);
+			dcln1.addEventListener("mousedown", function(){perem11=setInterval(dclnval1, 100);});
+			dcln1.addEventListener("mouseup", function(){clearInterval(perem11);});
+			dcln1.addEventListener("blur", function(){clearInterval(perem11);});
+			
+			dcln2.addEventListener("click", dclnval2);
+			dcln2.addEventListener("mousedown", function(){perem22=setInterval(dclnval2, 100);});
+			dcln2.addEventListener("mouseup", function(){clearInterval(perem22);});
+			dcln2.addEventListener("blur", function(){clearInterval(perem22);});
+			
+			dcln3.addEventListener("click", dclnval3);
+			dcln3.addEventListener("mousedown", function(){perem33=setInterval(dclnval3, 100);});
+			dcln3.addEventListener("mouseup", function(){clearInterval(perem33);});
+			dcln3.addEventListener("blur", function(){clearInterval(perem33);});
+		</script>
+	</body>
+</html>

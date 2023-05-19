@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../style/style1.css">
+		<link rel="stylesheet" type="text/css" href="../../style/styleheader.css">
+		<link rel="stylesheet" type="text/css" href="../../style/lessonsstyle.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+				
+		<title>Bliss: онлайн школа языков программирования</title>
+	</head>
+	
+	<body>
+		<header>
+			<div class="logo">
+				<div class="trademark">
+					<a href="../../index.html">Bliss</a>
+				</div>
+				
+				<div class="slogan">
+					— <i>безмятежное обучение программированию</i>
+				</div>
+			</div>
+			
+			<div class="mobilemenu" tabindex="1"><a>/Меню/</a></div>
+			
+			<div class="menu">
+				<a href="../../index.html">/О нас/</a>
+				<a href="../../html/courses.html" class="currentpage">/Курсы/</a>
+				<a href="../../html/contacts.html">/Контакты/</a>
+				<a href="../../html/log.html" id="getinacc">/Войти/</a>
+				<a href="../../html/cab.html" id="cabbutton">/Личный кабинет/</a>
+				<a href="../../html/adminpage.html" id="adminpage">/Управление/</a>
+				<a id="exit">/Выйти/</a>
+			</div>
+			
+			<script src="../../js/mobilemenu.js"></script>
+			
+			<div id="userinfo">Вы вошли как <a id="userlogin">гость</a></div>
+			
+			<script src="../../js/getuserlogin.js"></script>
+			<script src="../../js/scriptforbuttons.js"></script>
+			
+		</header>
+		
+		<div class="maincontainer">
+			<div class="content">
+				<div class="zagolovok">
+					<div class="bread"><a href="../../html/courses.html">Курсы</a> > <a href="../../courses/html5/htmlmain.html">Курс по HTML</a> > Урок 2</div>
+					<p id="zglvk">Урок 2. Атрибуты тегов. Добавление изображения на страницу</p>
+				</div>
+				
+				<div class="page">
+					<p>Во втором уроке мы продолжаем изучать структуру, но уже не самого документа, а тегов.
+					<p><img src="img/l1/ex4.png" class="smlimg">
+						Как мы уже знаем, тег состоит из имени, заключённого в знаки "больше" и "меньше". Но даже правильно написанные и закрытые теги почему-то не добавляют картинку на нашу страницу. Почему?
+					<p> Всё дело в том, что, кроме имени, каждый тег имеет ещё и набор <u><b>атрибутов</b></u> - свойств, описывающих поведение тега (и его наполнения, если это парный тег). Атрибуты бывают <b>уникальные</b>, присущие только одному или нескольким однотипным тегам, и <b>глобальные</b>, которые могут использоваться для всех или для большинства тегов. У атрибутов могут быть значения, но также существуют атрибуты, не требующие записи значений - например, атрибут <u>required</u>, используемый для полей форм, означает, что данное поле обязательно для заполнения.
+					<p>Атрибуты записываются в первой части тега через пробел после имени тега: &lt;имяТега имяАтрибута="значениеАтрибута"> или же &lt;имяТега имяАтрибута>. Если вы хотите записать много атрибутов, просто разделяйте их пробелами: &lt;имяТега имяАтрибута1="" имяАтрибута2="" имяАтрибута3="">. Зачастую атрибуты без значений записываются самыми последними.
+					</p>
+				</div>
+				
+				<div  class="page hiddenpage">
+					<div class="question">Проверьте себя!
+						<p>
+						<label>
+							Внимательно посмотрите на следующую запись и запишите в поля имя тега, его атрибуты и их значения (без скобок и кавычек):
+							<br>
+							<br>
+							&lt;input type="text" id="txt" name="imya" class="pole" required>
+							<br>
+							<br>
+							Имя тега:
+							<input type="text" id="vopros11" class="smallinput" pattern="input" maxlength="5" required>
+						</label>
+						<br>
+						<br>
+						<label>
+							Атрибут 1:
+							<input type="text" id="vopros12" class="teenyinput" placeholder="type" pattern="type" maxlength="4" required>
+						</label>
+						
+						<label>
+							Значение 1:
+							<input type="text" id="vopros13" class="teenyinput" placeholder="text" pattern="text" maxlength="4" required>
+						</label>
+						<br>
+						<br>
+						<label>
+							Атрибут 2:
+							<input type="text" id="vopros14" class="teenyinput" pattern="id" maxlength="2" required>
+						</label>
+						
+						<label>
+							Значение 2:
+							<input type="text" id="vopros15" class="teenyinput" pattern="txt" maxlength="3" required>
+						</label>
+						<br>
+						<br>
+						<label>
+							Атрибут 3:
+							<input type="text" id="vopros16" class="teenyinput" pattern="name" maxlength="4" required>
+						</label>
+						
+						<label>
+							Значение 3:
+							<input type="text" id="vopros17" class="teenyinput" pattern="imya" maxlength="4" required>
+						</label>
+						<br>
+						<br>
+						<label>
+							Атрибут 4:
+							<input type="text" id="vopros18" class="teenyinput" pattern="class" maxlength="5" required>
+						</label>
+						
+						<label>
+							Значение 4:
+							<input type="text" id="vopros19" class="teenyinput" pattern="pole" maxlength="4" required>
+						</label>
+						<br>
+						<br>
+						<label>
+							Атрибут 5:
+							<input type="text" id="vopros110" class="mediuminput" pattern="required" maxlength="8" required>
+						</label>
+						<br>
+						<br>
+						</p>
+						<button id="showme1" class="show" onClick="show1()">Показать ответы</button>
+						<button id="hideme1" class="hide" onClick="hide1()">Скрыть ответы</button>
+					</div>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>Итак, мы узнали о том, что для добавления какой-то информации на страницу многим тегам нужно прописать атрибуты. Но добавление простого текста на самом деле не требует никаких усилий - мы можем просто написать его внутри body!
+					<p><img src="img/l2/ex5.png" class="smlimg">
+					<img src="img/l2/ex6.png" class="rightsmlimg">
+						Попробуйте написать текст на вашей странице внутри div и посмотрите, что получится.
+						Вы заметили, что, кроме него, на странице есть ещё и поле для ввода текста и горизонтальная полоса? Это - то, как выглядят теги input и hr!
+					<p><img src="img/l2/ex7.png" class="smlimg">
+						Кстати, вы обратили внимание на отступы в коде? Они создаются с помощью нажатия клавиши TAB. Многие их не используют, но с ними код гораздо удобнее читать - сразу понятно, что внутри чего находится. Посмотрите на это изображение: это тот же код, но написанный без использования отступов. Выглядит уже не так наглядно, правда?
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p> Давайте теперь поробуем поработать с атрибутами, а для начала возьмёмся за картинку.
+					<p><img src="img/l2/html.png" class="rightsmlimg">
+						На самом деле, вы можете использовать любую картинку, какую только захотите, но для данного примера мы рекомендуем взять нашу.
+						Сохраните себе на компьютер эту картинку с логотипом нашего курса по HTML. Вы можете назвать её любым именем, главное - положите её в ту же папку, где находится ваш html-документ.
+					<p>Теперь - самое интересное: атрибуты! Вы же помните, что для вставки изображений используется тег img? Теперь мы попробуем сделать так, чтобы он вставил нашу картинку на страницу.
+					<p>Для того, чтобы вставить какое-либо изображение через тег img, используется атрибут <b>src</b>. Его значение - точный адрес нашей картинки, с названиями всех папок по пути к ней. Но если картинка лежит там же, где документ, то достаточно просто одного её имени: <b>src="html.png"</b>.
+					<img src="img/l2/ex8.png">
+					Обратите внимание на расширение! Наша картинка сохранена в формате .png, и это тоже нужно прописать - иначе вместо изображения будет иконка, означающая, что картинка не найдена.
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p><img src="img/l2/ex9.png" class="rightimg">
+						Если вы сделали всё правильно, то увидите примерно такую картину:
+						<br>
+						Да, на самом деле наши маленькие иконки не такие уж и маленькие! Это сделано для того, чтобы они хорошо выглядели на разных экранах с разным разрешением. Если бы они изначально были маленькие, то для больших экранов их пришлось бы растягивать, и они бы стали выглядеть некрасиво и "мыльно".
+					<p>Давайте немного подкорректируем размер нашей картинки. Для его изменения существует два основных атрибута - <b>width</b>, означающий ширину, и <b>height</b>, означающий высоту. Значения этих атрибутов записываются обычно либо в количестве пикселей, либо в процентном виде, и не могут быть меньше нуля.
+					<p><i>Кстати, эти два атрибута - глобальные. Они могут менять размеры не только картинок, но и блоков div, полей input и многого другого.</i>
+					<p>Пока не будем заострять внимание на процентах и пропишем нашей иконке конкретные размеры. Пожалуй, 200 пикселов будет в самый раз. Как записать пикселы? Легко! Они обозначаются двумя буквами <b>px</b>. Увидев их, браузер сразу понимает, как именно посчитать размер изображения. Итак, конечный вид атрибутов:
+					<br>
+					<b>width="200px" height="200px"</b>
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p><img src="img/l2/ex10.png">
+					Уже гораздо лучше! Иконка стала меньше и выглядит более аккуратной. Но что будет, если мы не пропишем, скажем, высоту, а оставим только ширину?
+					<br>
+					Ничего не изменится! Хотя кажется, что картинка должна исказиться, правда? Всё дело в том, что браузер автоматически меняет размер изображения так, чтобы его пропорции были равны исходному размеру. И если вы пропишете только ширину или высоту, размер второй стороны будет сделан таким, чтобы картинка не исказилась. Но, конечно, мы можем легко "сломать" её сами, если пропишем неправильные размеры для обоих атрибутов.
+					<p>Попробуйте поменять размеры для нашей иконки и посмотрите, как она станет выглядеть!
+					<br>
+					<br>
+						<div>
+						<img src="img/l2/html.png" id="changemysize" style="max-width: 80%; min-width: 10%;">
+						</div>
+					<text style="width:50%">
+						<label>Ширина width (<600):
+						<br>
+							<input type="number" class="mediuminput" id="wdt" min="10" max="600" value="512" required>
+							<button onClick="add1()" class="smallinput">+</button>
+							<button onClick="dcln1()" class="smallinput">-</button>
+						</label>
+						<br>
+						<label>Высота height (<600):
+							<br>
+							<input type="number" class="mediuminput" id="hgt" min="10" max="600" value="512" required>
+							<button onClick="add2()" class="smallinput">+</button>
+							<button onClick="dcln2()" class="smallinput">-</button>
+						</label>
+						<br>
+						<br>
+					</text>
+					<p>Возможно, вы заметили, что с какого-то значения размеры картинки перестают изменяться. Это происходит из-за того, что стили страниц нашего курса ограничивают размер картинки: она не может занимать более 80% и менее 10% от ширины страницы. Эти стили позволяют нам быть уверенными, что картинки не станут слишком большими или слишком маленькими на разных экранах.
+					<p><img src="img/l2/ex11.png" class="rightimg">
+					Вот, что получится, если ширину уменьшить на 100, а высоту - увеличить. Конечно, вряд ли вам когда-нибудь понадобится вот так растягивать картинки, но для других тегов правильно заданные ширина и высота могут сильно повлиять на внешний вид.
+					<br>Кстати, в отличие от размеров изображений, для которых можно прописать только ширину или только высоту, размеры других тегов требуют наличия обоих параметров. Всё потому, что картинки, которые мы добавляем на страницу, изначально имеют какой-то конкретный размер, а вот элементы html - нет, их размеры зависят от браузера и разрешения экрана. Поэтому, чтобы изменить размеры того же input, нужно прописать и ширину, и высоту.
+					</p>
+				</div>
+				
+				<div class="bottomthings">
+					<button id="prevlesson">Урок 1</button>
+					<button id="prev">Назад</button>
+					<p id="current">Страница 1 из 6</p>
+					<button id="next">Вперёд</button>
+					<button id="nextlesson">Урок 3</button>
+					<script src="../../js/pagesswitch.js"></script>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+		
+			prevlessonbutton.addEventListener("click", prevles);
+			nextlessonbutton.addEventListener("click", nextles);
+			
+			var wdt = document.getElementById("wdt");
+			var hgt = document.getElementById("hgt");
+			
+			hgt.addEventListener("change", sizechange);
+			hgt.addEventListener("input", sizechange);
+	
+			wdt.addEventListener("change", sizechange);
+			wdt.addEventListener("input", sizechange);
+			
+			function nextles() {
+				let go = confirm("Вы точно хотите начать следующий урок?");
+				if (go == true) {
+					document.location = "l3.html";
+					}
+				}
+			
+			function prevles() {
+				let go = confirm("Вы точно хотите вернуться к предыдущему уроку?");
+				if (go == true) {
+					document.location = "l1.html";
+					}
+				}
+			
+			function show1() {
+				document.getElementById("vopros11").placeholder = "input";
+				document.getElementById("vopros12").placeholder = "type";
+				document.getElementById("vopros13").placeholder = "text";
+				document.getElementById("vopros14").placeholder = "id";
+				document.getElementById("vopros15").placeholder = "txt";
+				document.getElementById("vopros16").placeholder = "name";
+				document.getElementById("vopros17").placeholder = "imya";
+				document.getElementById("vopros18").placeholder = "class";
+				document.getElementById("vopros19").placeholder = "pole";
+				document.getElementById("vopros110").placeholder = "required";
+				document.getElementById("showme1").style.display = "none";
+				document.getElementById("hideme1").style.display = "inline-block";
+				}
+			
+			function hide1() {
+				document.getElementById("vopros11").placeholder = "";
+				document.getElementById("vopros12").placeholder = "";
+				document.getElementById("vopros13").placeholder = "";
+				document.getElementById("vopros14").placeholder = "";
+				document.getElementById("vopros15").placeholder = "";
+				document.getElementById("vopros16").placeholder = "";
+				document.getElementById("vopros17").placeholder = "";
+				document.getElementById("vopros18").placeholder = "";
+				document.getElementById("vopros19").placeholder = "";
+				document.getElementById("vopros110").placeholder = "";
+				document.getElementById("showme1").style.display = "inline-block";
+				document.getElementById("hideme1").style.display = "none";
+				}
+			
+			function add1() {
+				var a=+wdt.value;
+				if (a<591&&a>9){
+					a+=10;
+					wdt.value=+a;
+					document.getElementById("changemysize").width = document.getElementById('wdt').value;
+					document.getElementById("changemysize").height = document.getElementById('hgt').value;
+				}
+				
+				if (a>600) {
+					wdt.value=600;
+				}
+				
+				else if (a<10) {
+					wdt.value=10;
+				}
+				
+			}
+			
+			function add2() {
+				var b=+hgt.value;
+				if (b<591&&b>9) {
+					b+=10;
+					hgt.value=+b;
+					document.getElementById("changemysize").height = document.getElementById('hgt').value;
+					document.getElementById("changemysize").width = document.getElementById('wdt').value;
+				}
+				
+				if (b>600) {
+					hgt.value=600;
+				}
+				
+				else if (b<10) {
+					hgt.value=10;
+				}
+			}
+			
+			function dcln1() {
+				var c=+wdt.value;
+				if (c>19&&c<601) {
+					c-=10;
+					wdt.value=c;
+					document.getElementById("changemysize").width = document.getElementById('wdt').value;
+					document.getElementById("changemysize").height = document.getElementById('hgt').value;
+				}
+				
+				if (c<10) {
+					wdt.value=10;
+				}
+				
+				else if (c>600) {
+					wdt.value=600;
+				}
+			}
+			
+			function dcln2() {
+				var d=+hgt.value;
+				if (d>19&&d<601) {
+					d-=10;
+					hgt.value=d;
+					document.getElementById("changemysize").height = document.getElementById('hgt').value;
+					document.getElementById("changemysize").width = document.getElementById('wdt').value;
+				}
+				
+				if (d<10) {
+					hgt.value=10;
+				}
+				
+				if (d>600) {
+					hgt.value=600;
+				}
+			}
+			
+			function sizechange() {				
+				if ((wdt.value!=0) && (wdt.value!=null) && (wdt.value!="") && (wdt.value>0) && (wdt.value<=600) && (hgt.value!=0) && (hgt.value!="") && (hgt.value!=null) && (hgt.value>0) && (hgt.value<=600)) {
+					document.getElementById("changemysize").width = wdt.value;
+					document.getElementById("changemysize").height = hgt.value;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

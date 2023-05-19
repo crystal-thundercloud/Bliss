@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/style1.css">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/styleheader.css">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/styleadmin.css">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/popup.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<title>Управление - Bliss: онлайн школа языков программирования</title>
+	</head>
+	
+	<body>
+		<header>
+			<div class="logo">
+				<div class="trademark">
+					<a href="http://bliss/index.html">Bliss</a>
+				</div>
+				
+				<div class="slogan">
+					— <i>безмятежное обучение программированию</i>
+				</div>
+			</div>
+			
+			<div class="mobilemenu" tabindex="1"><a>/Меню/</a></div>
+			
+			<div class="menu">
+				<a href="http://bliss/index.html">/О нас/</a>
+				<a href="http://bliss/html/courses.html">/Курсы/</a>
+				<a href="http://bliss/html/contacts.html">/Контакты/</a>
+				<a href="http://bliss/html/log.html" id="getinacc">/Войти/</a>
+				<a href="http://bliss/html/cab.html" id="cabbutton">/Личный кабинет/</a>
+				<a href="http://bliss/html/adminpage.html" id="adminpage" class="currentpage">/Управление/</a>
+				<a id="exit">/Выйти/</a>
+			</div>
+			
+			<script src="http://bliss/js/mobilemenu.js"></script>
+			
+			<div id="userinfo">Вы вошли как <a id="userlogin">гость</a></div>
+			
+			<script src="http://bliss/js/getuserlogin.js"></script>
+			<script src="http://bliss/js/scriptforbuttons.js"></script>
+			
+		</header>
+		
+		<div class="maincontainer">
+			<div id="popup" class="popup">
+				<div id="innermessage">
+					<p id="msg"></p>
+					<p id="timer"></p>
+					<input type="button" id="btn" value="Ok">
+					<input type="button" id="btn2" value="Отмена">
+				</div>
+			</div>
+			
+			<div class="content">				
+				<input type="radio" name="perek" id="pg1" checked>
+				<input type="radio" name="perek" id="pg2">
+				<div id="pagenav">
+					<p><label for="pg1">Список пользователей</label>
+					<p><label for="pg2">Сообщения</label></p>
+				</div>
+				
+				<div id="usershere">
+					<div id="userslist">Список пользователей</div>
+					<button id="manageadmins">Изменить администраторов</button>
+					<button id="confirmchanges" disabled>Подтвердить изменения</button>
+					<button id="canselchanges" disabled>Отмена</button>
+				</div>
+				
+				<div id="msghere">
+					<div id="msgdiv">Список сообщений</div>
+					<button id="deletemsg">Удалить выбранные сообщения</button>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			var popup = document.querySelector("#popup");
+			var msg = document.querySelector("#msg");
+			var popupbtn = document.querySelector("#btn");
+			var popupcanselbtn = document.querySelector("#btn2");
+			
+			//Функция удаления сообщений объявляется только если хотя бы одно отмечено
+			//До тех пор она фактически не существует и попытка её назначить кнопке приведёт к ошибке
+			//Чтобы этого не произошло, вначале проверяется, объявлена ли она
+			popupcanselbtn.addEventListener("click", function(){
+				if (typeof delmsg!='undefined') {
+					popupbtn.removeEventListener("click", delmsg);
+				}
+				msg.innerHTML="";
+				popup.style.display="none"});
+			
+			var usershere = document.querySelector("#usershere");
+			var userslist = document.querySelector("#userslist");
+			
+			var manageadminsbtn = document.querySelector("#manageadmins");
+			var confirmchangesdbt = document.querySelector("#confirmchanges");
+			var canselchangesbtn = document.querySelector("#canselchanges");
+			
+			popupcanselbtn.style.display = "none";
+			manageadminsbtn.disabled = false;
+			confirmchangesdbt.disabled = true;
+			canselchangesbtn.disabled = true;
+			
+			
+			function closeandreload() {
+				msg.innerHTML="";
+				popup.style.display="none";
+				window.location.reload();
+			}
+			
+			//Получение таблицы пользователей
+			var getuserslist = $.ajax({
+				url: "http://bliss/php/adminpageusertable.php",
+				dataType: "text",
+			})
+			
+			getuserslist.done(function(response) {
+				userslist.innerHTML = response;
+				
+				//Весь дальнейший код, напрямую связанный с таблицей, написан прямо в обработчике, выдающем результат запроса
+				//Объявленные вне обработчика скрипты будут обращаться к документу ДО того, как будет выдан результат (таблица)
+				//Даже если визуально она уже загрузилась, код вне этой функции сработает гораздо раньше выдачи результата
+				//Что приведёт к ошибкам об отсутствии элементов, к которым код обращается
+				
+				var allcheckboxes = usershere.querySelectorAll('input[type=checkbox]');
+				
+				manageadminsbtn.addEventListener("click", enablechkbxs);
+				canselchangesbtn.addEventListener("click", cnsl);
+				
+				//Функция для кнопки отмены
+				function cnsl() {
+					manageadminsbtn.disabled = false;
+					confirmchangesdbt.disabled = true;
+					canselchangesbtn.disabled = true;
+					
+					window.location.reload();
+					
+				}
+				
+				function enablechkbxs() {
+					manageadminsbtn.disabled = true;
+					confirmchangesdbt.disabled = false;
+					canselchangesbtn.disabled = false;
+					for (let i=0; i<allcheckboxes.length, chckbx = allcheckboxes[i];i++) {
+						if (chckbx.disabled == true) chckbx.disabled = false;
+					}
+				}
+				
+				/*function getid() {
+					for (let i=0; i<allcheckboxes.length, chckbx = allcheckboxes[i];i++) {
+						for (let j=0;;j++) {
+							alert(chckbx.parentNode.parentNode.firstChild.innerHTML);
+						}	
+					}
+				}*/
+				
+				var usertablefrma = document.querySelector("#usertablefrm");
+				
+				confirmchangesdbt.addEventListener('click', sendingtable);
+				
+				//Функция отправки изменённой таблицы пользователей
+				function sendingtable() {
+					var sendtable = $.ajax({
+						type: "post",
+						url: "http://bliss/php/manageadmins.php",
+						data: $('#usertablefrm').serialize(),
+						dataType: "text"
+					})
+					
+					sendtable.done(function(response) {
+						window.scrollTo(0,0);
+						msg.innerHTML=response;
+						popupcanselbtn.style.display = "none";
+						popup.style.display="flex";
+						popup.scrollIntoView({block: "start", behavior: "smooth"});
+						popupbtn.style.display="inline-block";
+						popupbtn.addEventListener("click", closeandreload);
+					})
+				}
+			})
+			
+			//Получение таблицы сообщений
+			var msghere = document.querySelector("#msghere");
+			var msgdiv = document.querySelector("#msgdiv");
+			var deletemsg = document.querySelector("#deletemsg");
+			
+			var getmessagetable = $.ajax({
+				url: "http://bliss/php/adminpagemessagestable.php",
+				dataType: "text",
+			})
+			
+			getmessagetable.done(function(response) {
+				msgdiv.innerHTML = response;
+				
+				//По аналогии с предыдущим запросом,
+				//Весь код работы с таблицей находится внутри функции вывода таблицы
+				var usermsgfrm = document.querySelector("#usermsgfrm");
+				
+				var selectall = document.querySelector("#selectall");
+				var allchckboxesmsg = msghere.querySelectorAll('input[type=checkbox]');
+				
+				selectall.addEventListener("change", checkall);
+				deletemsg.addEventListener("click", confirmdelmsg);
+				
+				//Функция выбора и отмены выбора всех чекбоксов с помощью главного чекбокса
+				function checkall() {
+					if (this.checked) {
+						for (let i=0; i<allchckboxesmsg.length, chckbx = allchckboxesmsg[i];i++) {
+							chckbx.checked=true;
+						}
+					}
+					
+					else if (!this.checked) {
+						for (let i=0; i<allchckboxesmsg.length, chckbx = allchckboxesmsg[i];i++) {
+							chckbx.checked=false;
+						}
+					}
+				}
+				
+				//Функция, вызываемая по клику на кнопку "удалить выбранные сообщения"
+				function confirmdelmsg() {
+					//Для функции some превращаем список элементов в массив
+					var arrayallchckmsg = Array.prototype.slice.call(allchckboxesmsg, 0);
+					
+					//С помощью функции some узнаём, если отмечен хотя бы один чекбокс
+					//Если отмечен, то переспрашиваем пользователя об удалении
+					if (arrayallchckmsg.some(function(chckbx){return chckbx.checked;})) {
+						msg.innerHTML="Вы точно хотите удалить выбранные сообщения?";
+						popup.style.display="flex";
+						popup.scrollIntoView({block: "start", behavior: "smooth"});
+						popupbtn.style.display="inline-block";
+						popupcanselbtn.style.display="inline-block";						
+						
+						popupbtn.removeEventListener("click", closeandreload); 
+						popupbtn.addEventListener("click", delmsg);
+						
+						 //Если пользователь подтвердил удаление
+						 //Отправляем запрос на сервер
+						function delmsg() {
+							popupcanselbtn.style.display="none";	
+							popupbtn.disabled=true;
+							msg.innerHTML="Ожидание ответа сервера...";
+							
+							var ajdelmsg = $.ajax({
+								type: "post",
+								url: "http://bliss/php/deletemessages.php",
+								data: $('#usermsgfrm').serialize(),
+								dataType: "text"
+							})
+						
+							//Сообщаем ответ сервера
+							ajdelmsg.done(function(response){
+								msg.innerHTML=response;
+								popupbtn.removeEventListener("click", delmsg);
+								popupbtn.addEventListener("click", closeandreload); 
+								popupbtn.disabled=false;
+							})
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

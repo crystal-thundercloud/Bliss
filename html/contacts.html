@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../style/style1.css">
+		<link rel="stylesheet" type="text/css" href="../style/stylecont.css">
+		<link rel="stylesheet" type="text/css" href="../style/styleheader.css">
+		<link rel="stylesheet" type="text/css" href="../style/popup.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<title>Контакты - Bliss: онлайн школа языков программирования</title>
+	</head>
+	
+	<body>
+		<header>
+			<div class="logo">
+				<div class="trademark">
+					<a href="../index.html">Bliss</a>
+				</div>
+				
+				<div class="slogan">
+					— <i>безмятежное обучение программированию</i>
+				</div>
+			</div>
+			
+			<div class="mobilemenu" tabindex="1"><a>/Меню/</a></div>
+			
+			<div class="menu">
+				<a href="../index.html">/О нас/</a>
+				<a href="courses.html">/Курсы/</a>
+				<a href="contacts.html" class="currentpage">/Контакты/</a>
+				<a href="log.html" id="getinacc">/Войти/</a>
+				<a href="cab.html" id="cabbutton">/Личный кабинет/</a>
+				<a href="adminpage.html" id="adminpage">/Управление/</a>
+				<a id="exit">/Выйти/</a>
+			</div>
+			
+			<script src="../js/mobilemenu.js"></script>
+			
+			<div id="userinfo">Вы вошли как <a id="userlogin">гость</a></div>
+			
+			<script src="../js/getuserlogin.js"></script>
+			<script src="../js/scriptforbuttons.js"></script>
+			
+		</header>
+		
+		<div class="maincontainer">
+			<div id="popup" class="popup">
+				<div id="innermessage">
+					<p id="msg"></p>
+					<p id="timer"></p>
+					<input type="button" id="btn" value="Ok">
+				</div>
+			</div>
+			
+			<div class="content"> 
+				<p>Горячая линия: 8 (800) 20-00-600
+				<p>Электронный адрес: bliss.school@mail.ru
+				<p>Онлайн-школа программирования "Bliss" всегда рада новым ученикам. Если вы - бывалый программист или верстальщик, мы также с удовольствием узнаем ваше мнение о наших уроках. Если у вас имеются какие-то вопросы, или же вы просто хотите поделиться с нами какими-либо идеями, просто заполните форму!
+				<p>Спасибо, что стараетесь сделать школу Bliss лучше!</p>
+				<form id="msgfrm" method="post">
+					<input type="text" name="imya" id="imya" placeholder="Ваше имя или почта" minlength="3" maxlength="50" required>
+					<textarea name="message" id="message" placeholder="Ваше сообщение" minlength="10" maxlength="5000" required></textarea>
+					<span id="usingsigns"></span>
+					<input type="submit" value="Отправить" name="msgsbtn" id="msgsbtn">
+				</form>
+			</div>
+		</div>
+		
+		<script>
+			var popup = document.querySelector("#popup");
+			var innermessage = document.querySelector("#innermessage");
+			var popupmsg = document.querySelector("#msg");
+			var popupbtn = document.querySelector("#btn");
+			var msgfrm = document.querySelector("#msgfrm");
+			var msgsbtn = document.querySelector("#msgsbtn");
+			
+			var imyapole = document.querySelector("#imya");
+			var msgpole = document.querySelector("#message");
+			
+			var usingsigns = document.querySelector("#usingsigns");
+			
+			popup.style.display = "none";
+			
+			msgfrm.addEventListener("submit", function(e){e.preventDefault();});
+			msgsbtn.addEventListener("click", sndmsg);
+			popupbtn.addEventListener("click", function(){popup.style.display="none";});
+			
+			msgpole.addEventListener("input", howmanysigns);
+			
+			//Функция проверки числа знаков в поле сообщения
+			function howmanysigns() {
+				usingsigns.innerHTML=msgpole.value.length+"/5000";
+				usingsigns.style.color = "rgb(100, 193, 102)";
+				
+				//Минимум 10 знаков
+				if (msgpole.value.length<10) {
+					usingsigns.style.color = "rgb(181, 59, 59)";
+					usingsigns.innerHTML="Минимум 10 знаков<br>"+msgpole.value.length+"/5000";
+				}
+				
+				//Максимум 5000
+				else if (msgpole.value.length>5000) {
+					msgpole.style.borderColor = "rgb(249, 139, 139)";
+					msgpole.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					usingsigns.style.color = "rgb(181, 59, 59)";
+					usingsigns.innerHTML="Превышен лимит знаков!<br>"+msgpole.value.length+"/5000";
+				}
+				
+				else {
+					msgpole.style.borderColor = "";
+					msgpole.style.background = "";
+				}
+			}
+			
+			//Функция отправки сообщения на сервер
+			function sndmsg() {
+				if (imyapole.validity.valid&&imyapole.value!=""&&msgpole.value.length>9&&msgpole.value.length<5001&&msgpole.value!="") {
+					var sendmessage = $.ajax({
+						url: "../php/sendmessage.php",
+						data: $('#msgfrm').serialize(),
+						type: "post",
+						dataType: "text",
+					})
+					
+					//После отправки сообщить ответ сервера
+					sendmessage.done(function(response){
+						popup.style.display = "flex";
+						popup.scrollIntoView({block: "start", behavior: "smooth"});
+						popupbtn.style.display = "inline-block";
+						popupmsg.innerHTML = response;
+						//Если отправка успешна - очистить форму
+						if (response=="Сообщение успешно отправлено.") {
+							usingsigns.innerHTML="";
+							msgfrm.reset();
+						}
+					})
+				}
+			}
+		</script>
+	</body>
+</html>

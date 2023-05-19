@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../../style/style1.css">
+		<link rel="stylesheet" type="text/css" href="../../style/styleheader.css">
+		<link rel="stylesheet" type="text/css" href="../../style/lessonsstyle.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+				
+		<title>Bliss: онлайн школа языков программирования</title>
+	</head>
+	
+	<body>
+		<header>
+			<div class="logo">
+				<div class="trademark">
+					<a href="../../index.html">Bliss</a>
+				</div>
+				
+				<div class="slogan">
+					— <i>безмятежное обучение программированию</i>
+				</div>
+			</div>
+			
+			<div class="mobilemenu" tabindex="1"><a>/Меню/</a></div>
+			
+			<div class="menu">
+				<a href="../../index.html">/О нас/</a>
+				<a href="../../html/courses.html" class="currentpage">/Курсы/</a>
+				<a href="../../html/contacts.html">/Контакты/</a>
+				<a href="../../html/log.html" id="getinacc">/Войти/</a>
+				<a href="../../html/cab.html" id="cabbutton">/Личный кабинет/</a>
+				<a href="../../html/adminpage.html" id="adminpage">/Управление/</a>
+				<a id="exit">/Выйти/</a>
+			</div>
+			
+			<script src="../../js/mobilemenu.js"></script>
+			
+			<div id="userinfo">Вы вошли как <a id="userlogin">гость</a></div>
+			
+			<script src="../../js/getuserlogin.js"></script>
+			<script src="../../js/scriptforbuttons.js"></script>
+			
+		</header>
+		
+		<div class="maincontainer">
+			<div class="content">
+				<div class="zagolovok">
+					<div class="bread"><a href="../../html/courses.html">Курсы</a> > <a href="../../courses/html5/htmlmain.html">Курс по HTML</a> > Урок 3</div>
+					<p id="zglvk">Урок 3. Атрибуты тегов. Всё о теге input.</p>
+				</div>
+				
+				<div class="page">
+					<p>В прошлом уроке мы с вами поговорили о теге <b>img</b> и научились вставлять картинки на страницу. Возможно, вы спросите - чего такого может быть в теге, который просто создаёт текстовое поле на странице? А мы вам ответим - тег <b>input</b> не так прост, как кажется.
+					<p>По умолчанию тег input создаёт обычное окошко для ввода любого текста, но с помощью атрибутов его внешний вид можно изменить до неузнаваемости!
+					<p>Помните задание во втором уроке? Самый первый атрибут тега input, он же - самый важный - <b>type</b>. Этот атрибут также является глобальным, но вот значения зависят от тега, в который его прописывают. Наш тег input обладает довольно широким спектром значений для атрибута type.
+					<p>Перечислим их сразу, а затем изучим каждый подробнее.
+					<p style="text-align:center">Типы input, создающие поля для ввода текстовой информации:<br>
+						<b>text, password, email, search, url</b>
+						<br>
+						Типы, создающие поля для ввода чисел, времени и даты:<br>
+						<b>number, date, time</b>
+						<br>
+						Типы, создающие кнопки:<br>
+						<b>button, submit, reset, image, file</b>
+						<br>
+						Типы выбора ответа:<br>
+						<b>radio, checkbox</b>
+						<br>
+						Другие типы:<br>
+						<b>range, color</b>
+					<p>Как видите, их совсем немало! А если учесть ещё и типы, которые есть, но не поддерживаются большинством браузеров, то их будет ещё больше. Но мы обсудим только те, что точно будут работать почти во всех браузерах. 
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p><u>Input - поля ввода текстовой информации</u>
+					<p>Слово "input" переводится как "ввод", а куда обычно вводятся данные на страницах? Правильно, в текстовые поля! Но и они бывают разными.
+					<p>Самое стандартное поле имеет тип <b>text</b> и предназначено для ввода абсолютно любой последовательности символов абсолютно любой длины. Зачастую такие поля (с ограничениями на длину) используют для ввода капчи на сайтах, а также логинов и, например, статусов в соцсетях. Вот, как выглядит такое поле:
+					<p><input type="text" class="giantinput" maxlength="15" placeholder="текст!" required>
+					<p>Знакомо, не правда ли? Именно такой тип почти у всех полей проверки ваших ответов!
+					<p>А вот другой тип - <b>email</b>. Все мы знаем, что такое почта и как обычно выглядит адрес почтового ящика. Казалось бы, внешне такое поле ничем не отличается от обычного текстового, однако оно умеет распознавать адреса почты и не позволяет отправить данные, пока адрес не будет введён правильно. Как поле находит адреса? По значку <b>@</b>! Попробуйте ввести обычный текст в поле ниже: оно не станет зелёным, пока вы не введёте правильный формат.
+					<p><input type="email" class="giantinput" maxlength="15" placeholder="почта!" required>
+					<p>Ещё один тип, используемый для полей форм регистрации и авторизации - <b>password</b>. Все мы знаем, что пароль прячется за символами точек или звёздочек, а теперь вы узнали, какой тип у поля, скрывающего вводимые вами данные! Кстати, браузер автоматически распознаёт поля для ввода паролей и может предлагать запоминать введённые в них данные.
+					<p><input type="password" class="giantinput" maxlength="15" placeholder="пароль!" required>
+					<p>Следующий тип - <b>search</b>, обозначающий поле для поиска информации. Внешне оно не отличается от простого текстового поля, но при совместной работе с JavaScript начинает творить чудеса поиска по сайту.
+					<p><input type="search" class="giantinput" maxlength="15" placeholder="поиск!">
+					<p>Последнее из нашего списка поле имеет тип <b>url</b>, созданный специально для ввода адресов веб-сайтов. Он определяет ссылку по кодовым словам "http://" или "https://".
+					<p><input type="url" class="giantinput" maxlength="15" placeholder="ссылка!" required>
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p><u>Input - числа, дата и время</u>
+					<p>Следующая группа полей - поля для ввода чисел. Конечно, их можно вводить и в обычное текстовое поле, но если нам ничего, кроме конкретной числовой информации, не нужно, то достаточно просто поставить нужный тип на поле input.
+					<p>Тип number крайне удобен не только тем, что запрещает ввод чего-либо, кроме чисел, но и тем, что многие браузеры автоматически добавляют такому полю кнопки "вверх" и "вниз", что позволяет увеличить или уменьшить число в поле, не печатая его вручную. А если подредактировать некоторые особенные <i>атрибуты</i> этого поля, то можно, например, изменить шаг, на который стрелки увеличат или уменьшат число. Но и у этого типа имеется недостаток: до сих пор стрелки не реализованы на многих мобильных браузерах, поэтому, если их не добавить с помощью JavaScript, пользователь просто не поймёт, какие значения может вводить. В первом поле нет никаких ограничений на ввод, а во второе можно вводить только числа от 100001, причём шаг также равен 100001.
+					<p style="text-align:center"><input type="number" class="mediuminput" placeholder="число!">
+						<br>
+						<input type="number" id="changeme" class="largeinput" min="100001"max="500000000" step="100001" placeholder="число с атрибутами!">
+						<input type="button" class="tinyinput" value="+" id="add0" >
+						<input type="button" class="tinyinput" value="-" id="dcln0">
+					<p>Теперь - один из видов полей, которые вы явно встречали, если записывались ко врачу или покупали билеты в кино: <b>date</b> - дата. Клик по этому полю открывает всплывающее окно выбора дня, месяца и года, но вы можете ввести дату и самостоятельно с клавиатуры.
+					<p><input type="date" placeholder="дата!" required>
+					<p>Ну и последний тип данной категории - <b>time</b>. Он, как можно понять из названия, позволяет нам указать время в виде ЧЧ:ММ, причём в 24-часовом формате.
+					<p><input type="time" placeholder="время!" required>
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p><u>Input - кнопки</u>
+					<p>Поначалу особо и не угадать, что для поля ввода и для создания кнопки используется один и тот же тег (хотя кнопку можно сделать и с ещё одним тегом!), но это - далеко не всё, на что способен тег input.
+					<p>Итак, самая обычная базовая кнопка: <b>button</b>. Она не имеет какой-либо встроенной функции и просто выглядит как пустая кнопка с какой-либо надписью, добавленной с помощью <i>атрибутов</i>.
+					<p><input type="button" value="я кнопочка!">
+					<p>Уже не такая обычная и до боли знакомая: <b>file</b>. Этот тип позволяет прикрепить файл на страницу, а если она ещё и связана с формой, то файл можно будет отправить на сервер. Ну а без привязки к серверу эта кнопка просто позволяет открывать проводник и класть на эту страницу разные файлы, которые пропадут после перезагрузки страницы. Кстати, надпись на кнопке выбора файла по умолчанию устанавливается самим браузером.
+					<p><input type="file" style="width: 99%">
+					<p>Следующие кнопки используются исключительно в формах и предоставляют две основные функции: отправку и очистку данных формы, причём для отправки существует целых две кнопки.
+					<p>Одна из них - <b>submit</b>. В отличие от обычной кнопки, эта, находясь внутри тега form вместе с полями для ввода, при нажатии запускает автоматическую валидацию формы - например, сразу же всплывут сообщения "пожалуйста, заполните это поле".
+					<p><input type="submit">
+					<p>Вторая же кнопка имеет тип <b>image</b>. Казалось бы, а причём тут картинки? На самом деле это нужно для создания стилей на странице: кнопка типа image имеет точно те же функции, что и кнопка типа submit, но только является картинкой, прикреплённой с помощью атрибутов. Более того, если эта картинка с прозрачным фоном, кликнуть на этот фон вы не сможете - функциональная часть кнопки будет только на тех местах, где находятся хотя бы немного непрозрачные части. Однако, такие кнопки имеют один существенный минус: нажатие на них никак визуально не отображается, если не прописать это через JavaScript. Поэтому, чтобы вы точно знали, что на следующую кнопку вы нажали, в браузере всплывёт окошко.
+					<p><input type="image" src="img/l3/кнопка.png" onClick="alert('нажали!')">
+					<p>Ну и последняя из имеющихся кнопок - кнопка сброса формы <b>reset</b>. Её функция проста - полностью очищать все поля ввода.
+					</p>
+					<form style="text-align:center">
+					<input type="text" maxlength="19" placeholder="напишите что-нибудь">
+					<br>
+					<input type="reset">
+					</form>
+					<p>Как мы уже сказали, кнопки можно делать не только с помощью одиночного тега input. Существует также парный тег <b>button</b>, создающий обычную кнопку. Внутри этого тега пишется текст, который вы бы хотели видеть на кнопке.
+					<p style="text-align:center"><button class="largeinput">Кнопка button!</button>
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p><u>Input - выбор ответа</u>
+					<p>Удивительно, но на полях и кнопках наш тег input не останавливается и принимает ещё один вид - вид всем известной "галочки" или "точечки".
+					<p>Тип <b>radio</b> обозначает "точечку", а если быть более конкретными, то он указывает на то, что из представленного списка можно выбрать только что-то одно.
+					<p>
+						<label><input type="radio" class="exrd" name="exrd">Шоколад</label> 
+						<label><input type="radio" class="exrd" name="exrd">Мороженое</label> 
+						<label><input type="radio" class="exrd" name="exrd">Кексы</label> 
+					<p>Хотите узнать, как сделать так, чтобы из кучи радио выбрать можно было только один? Добавьте им атрибут <b>name</b> с одинаковым значением, и тогда все ваши радио будут считаться одним набором. Например, у наших радио этот атрибут прописан вот так:
+					<p><b>name="exrd"</b>
+					<p>Почему exrd? Это сокращение от example radio. Атрибут name - глобальный, и нужен для большого количества возможностей. Для радио он обозначает их общность, а для полей ввода - имя, к которому обращается сервер на языке PHP! Поэтому, если вы не хотите потеряться в своём коде, давайте важным тегам понятные имена.
+					<p>Тип <b>checkbox</b> - "галочка", означающая множественный выбор. Видите чекбокс - смело можете выбирать всё!
+					<p>
+						<label><input type="checkbox" class="exchck">Шоколад</label> 
+						<label><input type="checkbox" class="exchck">Мороженое</label> 
+						<label><input type="checkbox" class="exchck">Кексы</label> 
+					<p>В отличие от radio, чекбоксы не нуждаются в именах для правильной работы. Но если они нужны вам для отправки информации на сервер - позаботьтесь о том, чтобы по имени было понятно, за что ваши чекбоксы отвечают.
+					<p><u>Input - другое</u>
+					<p>В эту категорию мы добавили те типы, которые не смогли отнести к другим. Здесь их у нас всего двое, и те появились не так давно, поэтому реализация очень страдает на некоторых браузерах.
+					<p>Первый в этой категории - тип <b>range</b>. Вы видели его на сайтах интернет-магазинов, когда меняли минимальную и максимальную стоимость в фильтрах товаров. Это бегунок, у которого слева - минимальное значение, а справа - максимальное. К сожалению, сделать его понятным без JavaScript пока не представляется возможным: браузер Chrome может отображать значения на оси бегунка, а вот Firefox - нет. К тому же, понять, что вы выбрали, если значений много, тоже очень сложно. В зависимости от браузера, у бегунка ниже вы либо увидете насечки каждые 10 значений, либо нет.
+					<p><input type="range" list="rangelist" min="0" max="50" step="10" style="width:300px">
+						<datalist id="rangelist">
+							<option value="0" label="0">
+							<option value="10">
+							<option value="20" label="20">
+							<option value="30" label="30">
+							<option value="40">
+							<option value="50" label="50">
+						</datalist>
+					<p>Второй тип input, которому не нашлось места среди остальных - <b>color</b>. Этот тип позволяет открыть стандартное окно выбор цвета, что часто используется для стилизации интерфейса на некоторых сайтах.
+					<p><input type="color">
+					<p>
+					</p>
+				</div>
+				
+				<div class="page hiddenpage">
+					<div class="question">Проверьте себя!
+						<p>Этот тип тега input создаёт обычное текстовое поле:
+							<br>
+							<label>type="
+								<input type="text" id="q1" class="teenyinput" pattern="text" required>"
+							</label>
+						<p>У этого типа input часто не видно стрелки на мобильных телефонах:
+							<br>
+							<label>type="
+								<input type="text" id="q2" class="mediuminput" pattern="number" required>"
+							</label>
+						<p><label>Сколько типов тега input мы прошли в этом уроке?
+							<br>
+							<input type="text" id="q3" class="tinyinput" pattern="17" required></label>
+						<p>Посмотрите на данный input и напишите, какой у него тип:
+							<br>
+							<input type="color">
+							<br>
+							<label>type="
+								<input type="text" id="q4" class="teenyinput" pattern="color" required>"
+							</label>
+						<p>Этот тип тега input создаёт кнопку сброса данных формы:
+							<br><br>
+							<input type="radio" name="q5" id="q51">
+							<label for="q51">delete</label>
+							
+							<input type="radio" name="q5" id="q52">
+							<label for="q52">erase</label>
+							
+							<input type="radio" name="q5" id="q53">
+							<label for="q53">radio</label>
+							
+							<input type="radio" class="corrad" name="q5" id="q54">
+							<label for="q54">reset</label>
+							
+							<input type="radio" name="q5" id="q55">
+							<label for="q55">replace</label>
+							
+						<p>Этот тип тега input добавляет возможность поставить галочку:
+							<br>
+							<label>type="
+								<input type="text" id="q6" class="mediuminput" pattern="checkbox" required>"
+							</label>
+						<p>Этот тип тега input нужен для ввода паролей:<br>
+							<label>type="
+								<input type="text" id="q7" class="mediuminput" pattern="password" required>"
+							</label>
+						</p>
+						<button id="showme" class="show" onClick="show()">Показать ответы</button>
+						<button id="hideme" class="hide" onClick="hide()">Скрыть ответы</button>
+					</div>
+				</div>
+				
+				<div class="page hiddenpage">
+					<p>Возможно, вы, попробовав разные текстовые поля в этом документе, заметили, что некоторые поля для ввода специальных данных (как, например, url) принимают значения, несколько отличающиеся от предполагаемых. Это происходит потому, что встроенная валидация HTML проверяет только самые базовые элементы вводимой информации. То же поле с типом url без дополнительных параметров легко в качестве ссылки возьмёт любой текст, написанный латинскими буквами, в котором присутствует хотя бы одно двоеточие. Неизвестно, почему валидация самого HTML имеет такие низкие запросы, но вполне известно их решение. Им может быть либо всё тот же код на JavaScript, либо ещё один атрибут - <b>pattern</b>. Атрибут pattern создан для полей ввода текста или чисел, и представляет собой <b>регулярное выражение</b> - эдакую формулу, написанную с использованием символов, воспринимаемых HTML. Да-да, даже у предложений есть свои формулы! Но более подробно мы разберём их в следующем уроке.
+					</p>
+				</div>
+				
+				<div class="bottomthings">
+					<button id="prevlesson">Урок 2</button>
+					<button id="prev">Назад</button>
+					<p id="current">Страница 1 из 7</p>
+					<button id="next">Вперёд</button>
+					<button id="nextlesson">Урок 4</button>
+					<script src="../../js/pagesswitch.js"></script>
+				</div>
+			</div>
+		</div>
+		
+		<script src="../../js/adddcln.js"></script>
+		<script>
+		
+		prevlessonbutton.addEventListener("click", prevles);
+		nextlessonbutton.addEventListener("click", nextles);
+		
+		
+			
+			function nextles() {
+				let go = confirm("Вы точно хотите начать следующий урок?");
+				if (go == true) {
+					document.location = "l4.html";
+					}
+				}
+			
+			function prevles() {
+				let go = confirm("Вы точно хотите вернуться к предыдущему уроку?");
+				if (go == true) {
+					document.location = "l2.html";
+					}
+				}
+			
+			function show() {
+				document.getElementById("q1").placeholder = "text";
+				document.getElementById("q2").placeholder = "number";
+				document.getElementById("q3").placeholder = "17";
+				document.getElementById("q4").placeholder = "color";
+				document.getElementById("q54").checked = true;
+				document.getElementById("q6").placeholder = "checkbox";
+				document.getElementById("q7").placeholder = "password";
+				document.getElementById("showme").style.display = "none";
+				document.getElementById("hideme").style.display = "inline-block";
+			}
+			
+			function hide() {
+				document.getElementById("q1").placeholder = "";
+				document.getElementById("q2").placeholder = ""
+				document.getElementById("q3").placeholder = "";
+				document.getElementById("q4").placeholder = "";
+				document.getElementById("q54").checked = false;
+				document.getElementById("q6").placeholder = "";
+				document.getElementById("q7").placeholder = "";
+				document.getElementById("showme").style.display = "inline-block";
+				document.getElementById("hideme").style.display = "none";
+			}
+			
+			var add0 = document.querySelector("#add0");
+			var dcln0 = document.querySelector("#dcln0");
+			
+			var perem1 = '';
+			var perem2 = '';
+			
+			add0.addEventListener("click", add);
+			add0.addEventListener("mousedown", function(){perem1=setInterval(add, 100);});
+			add0.addEventListener("mouseup", function(){clearInterval(perem1);});
+			add0.addEventListener("blur", function(){clearInterval(perem1);});
+				
+			dcln0.addEventListener("click", dcln);
+			dcln0.addEventListener("mousedown", function(){perem2=setInterval(dcln, 100);});
+			dcln0.addEventListener("mouseup", function(){clearInterval(perem2);});
+			dcln0.addEventListener("blur", function(){clearInterval(perem2);});
+			
+			function add() {
+				addval(499904999, 100001, '#changeme');
+			}
+			
+			function dcln() {
+				dclnval(100001, 100001, '#changeme');
+			}
+			
+		</script>
+	</body>
+</html>

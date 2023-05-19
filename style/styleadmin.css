@@ -1,0 +1,157 @@
+.content {
+	background: none;
+}
+
+#pagenav {
+	width: 100%;
+	background: none;
+	border-radius: 30px 30px 0 0;
+	box-sizing: border-box;
+	display: flex;
+	font-size: 1.3em;
+}
+
+#pg1, #pg2 {
+	display: none;
+}
+
+#pg1:checked~#pagenav>p:first-child,
+#pg2:checked~#pagenav>p:last-child {
+	background: linear-gradient(rgba(255, 255, 255, .7), rgba(155, 206, 255, .7));
+	border-radius: 30px 30px 0 0;
+	box-shadow: 5px -5px 5px rgba(0, 0, 0, .5); 
+}
+
+#pg1:checked~#usershere {
+	display: flex;
+}
+
+#pg2:checked~#msghere {
+	display: flex;
+}
+
+#pg1:checked~#pagenav>p:last-child,
+#pg2:checked~#pagenav>p:first-child {
+	background: linear-gradient(rgba(230, 230, 230, .7), rgba(135, 186, 235, .7));
+	border-radius: 30px 30px 0 0;
+	color: rgb(70, 70, 70);
+}
+
+#pg1:checked~#pagenav>p:last-child>label:hover,
+#pg2:checked~#pagenav>p:first-child>label:hover {
+	color: white;
+	text-decoration: underline;
+}
+
+#pagenav>p {
+	width: 50%;
+	margin: 0 auto;
+	padding: 2%;
+	text-align: center;
+}
+
+#pagenav label {
+	margin: 1%;
+	cursor: pointer;
+}
+
+#usershere, #msghere {
+	display: none;
+	flex-flow: column;
+	align-items: center;
+	width: 100%;
+	padding: 1%;
+	box-sizing: border-box;
+	background: linear-gradient(rgba(155, 206, 255, .7), rgba(104, 255, 224, .7));
+	border-radius: 0 0 30px 30px;
+}
+
+#userslist, #msgdiv {
+	padding: 2%;
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 2%;
+	overflow-x: auto;
+	word-wrap: break-word;
+}
+
+#msgdiv {
+	max-height: 100vh;
+	overflow-y: scroll;
+}
+
+#userslist table, #msgdiv table {
+	border-radius: 30px;
+	min-width: 100%;
+}
+
+#msgdiv table td {
+	vertical-align: top;
+	max-width: 800px;
+}
+
+#userslist table th, #userslist table td {
+	padding: 15px;
+	text-align: center;
+}
+
+#msgdiv table th, #msgdiv table td {
+	padding: 15px;
+}
+
+#msgdiv img {
+	max-width: 100%
+}
+
+table th {
+	background: rgba(255, 255, 255, .5);
+}
+
+table th:first-child {
+	border-radius: 30px 0 0 0;
+}
+
+table th:last-child {
+	border-radius: 0 30px 0 0;
+}
+
+table tr:nth-child(odd)>td {
+	background: rgba(255, 255, 255, .5);
+}
+
+table tr:nth-child(even)>td {
+	background: rgba(155, 255, 255, .5);
+}
+
+table tr:last-child>td:first-child {
+	border-radius: 0 0 0 30px;
+}
+
+table tr:last-child>td:last-child {
+	border-radius: 0 0 30px 0;
+}
+
+button {
+	padding: 1%;
+	margin: 1%;
+	font-size: 1.2em;
+	border-radius: 30px;
+	border: 3px outset;
+	border-color: #5fb7e2;
+	background: #5fb7e2;
+}
+
+#canselchanges {
+	background: #3b6c82;
+	border-color: #62a0bc;
+}
+
+button:disabled {
+	border: 3px inset #5fb7e2;
+	background: #4297bf;
+}
+
+button:active {
+	border: 3px inset #5fb7e2;
+	background: #4297bf;
+}

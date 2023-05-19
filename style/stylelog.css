@@ -1,0 +1,370 @@
+.content {
+	padding: 1%;
+	text-align: center;
+}
+
+.content form {
+	width: 95%;
+	display: flex;
+	flex-flow: column;
+	justify-content: space-between;
+	padding: 5% 0 5% 0;
+	font-size: 1.5vmax;
+	background: rgba(255, 255, 255, .3);
+	border-radius: 30px;
+	text-align: left;
+}
+
+h1 {
+	width: 100%;
+	padding: 1% 0%;
+	font-size: 2vmax;
+	color: rgb(9, 79, 122);
+	background: rgba(255, 255, 255, .3);
+	border-radius: 30px;
+}
+
+h3 {
+	width: 100%;
+	padding: 1% 0;
+	text-align: center;
+	font-size: 1.5vmax;
+	color: rgb(9, 79, 122);
+	background: rgba(255, 255, 255, .3);
+	border-radius: 30px;
+}
+
+label {
+	margin: 1%;
+	float: left;
+}
+
+span {
+	font-size: .8em;
+	width: 95%;
+	color: rgb(181, 59, 59);
+	margin: 0 1% 4% 2%;
+}
+
+p {
+	margin: 1%;
+}
+
+input:not([type=button]) {
+	text-align: center;
+	border: 3px solid #5fb7e2;
+	background: linear-gradient(rgba(255, 255, 255, .7), rgba(155, 206, 255, .7));
+	width: 95%;
+	font-size: 1.5vmax;
+	border-radius: 30px;
+	margin: 0 1% 1% 2%;
+}
+
+input[type=file] {
+	font-size: 2vmax;
+	min-height: 50px;
+	min-width: 40%;
+	margin: 2%;
+}
+
+input[type=submit], input[type=button] {
+	font-size: 2vmax;
+	min-width: 40%;
+	margin: 2%;
+	border-radius: 30px;
+	background: #5fb7e2;
+}
+
+#accsettings {
+	display: flex;
+	flex-flow: column nowrap;
+	width: 100%;
+}
+
+#accsettings>div:first-child {
+	font-size: 1.5vmax;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	background: rgba(255,255,255,.3);
+	border-radius: 30px;
+	padding: 5%;
+	margin-bottom: 2%;
+}
+
+#accsettings>div:last-child {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+#accsettings>div:first-child>div {
+	margin-left: 5%;
+	text-align: left;
+	width: 100%;
+	flex: 1 1;
+}
+
+/*ДОСТИЖЕНИЯ*/
+
+#achiev {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+#achiev div {
+	width: 23%;
+	margin: 1%;
+	position: relative;
+}
+
+#achiev div>img {
+	max-width: 100%;
+	cursor: pointer;
+}
+
+@keyframes vert {
+  from {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+}
+
+@keyframes vert2 {
+  to {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+}
+
+#achiev div>img+p {
+	visibility: hidden;
+	opacity: 0;
+	width: 270%;
+	padding: 2%;
+	position: absolute;
+	left: -50%;
+	bottom: 100%;
+	background: linear-gradient(rgba(255, 255, 255, .95), rgba(155, 206, 255, .95));
+	border: 3px solid #5fb7e2;
+	border-radius: 50px;
+	font-size: .85em;
+	filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, .6));
+	animation: vert2 .5s;
+	transition: all .35s;
+	pointer-events: none;
+}
+
+#achiev div>img+p:after {
+	display: block;
+	content: '';
+	position: absolute;
+	left: 20%;
+	border-left: 20px solid transparent;
+	border-top: 15px solid rgba(155, 206, 255, .9);
+	filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, .6));
+	animation: vert .5s;
+}
+
+#achiev div>img {
+	transition: all .3s;
+}
+
+#achiev div>img:hover {
+	filter: drop-shadow(3px 3px 3px black);
+}
+
+#achiev div>img:hover+p {
+	visibility: visible;
+	opacity: 1;
+	animation: vert .5s;
+}
+
+#achiev div>img:hover+p:after {
+	animation: vert .5s;
+}
+
+/*ФОРМЫ*/
+
+#accsettings #frm, #accsettings #avafrm {
+	width: 49%;
+	margin-bottom: 1%;
+}
+	
+#ava {
+	border: 3px solid white;
+	max-height: 300px;
+	max-width: 100%;
+	filter: drop-shadow(3px 3px 3px black);
+}
+
+#clearava {
+	background: #3b6c82;
+	border-color: #62a0bc;
+}
+
+/********************(от 1600 до 1900 пикселей)********************/
+@media all and ((max-width: 1900px) and (min-width: 1600px)) {
+
+.content form, #accsettings>div:first-child {
+	font-size: 1.5vmax;
+}
+
+h1 {
+	font-size: 2vmax;
+}
+
+h3 {
+	font-size: 1.5vmax;
+}
+
+input[type=submit], input[type=button], input[type=file] {
+	font-size: 2vmax;
+}
+
+#ava {
+	max-height: 300px;
+}
+
+}
+
+/********************(от 1400 до 1600 пикселей)********************/
+@media all and ((max-width: 1600px) and (min-width: 1400px)) {
+
+.content form, #accsettings>div:first-child {
+	font-size: 2vmax;
+}
+
+h1 {
+	font-size: 2vmax;
+}
+
+h3 {
+	font-size: 1.5vmax;
+}
+
+input:not([type=button]) {
+	font-size: 2vmax;
+}
+
+
+input[type=submit], input[type=button], input[type=file] {
+	font-size: 2vmax;
+}
+
+#ava {
+	max-height: 300px;
+}
+
+}
+
+
+/********************(от 1000 до 1400 пикселей)********************/
+@media all and ((max-width: 1400px) and (min-width: 1000px)) {
+
+.content form, #accsettings>div:first-child {
+	font-size: 2.5vmax;
+}
+
+h1 {
+	font-size: 3vmax;
+}
+
+h3 {
+	font-size: 2.5vmax;
+}
+
+input[type=submit], input[type=button], input[type=file] {
+	font-size: 2vmax;
+}
+
+#ava {
+	max-height: 250px;
+}
+
+#achiev div>img+p {
+	width: 300%;
+}
+
+#achiev div>img+p:after {
+	left: 20%;
+}
+
+}
+
+/********************(до 1000 пикселей)********************/
+@media all and (max-width: 1000px) {
+
+.content form, #accsettings>div:first-child {
+	font-size: 2.5vmax;
+}
+
+h1 {
+	font-size: 3vmax;
+}
+
+h3 {
+	font-size: 2.5vmax;
+}
+
+input:not([type=button]) {
+	font-size: 3vmax;
+}
+
+
+input[type=submit], input[type=button], input[type=file] {
+	font-size: 3vmax;
+}
+
+#ava {
+	max-height: 200px;
+}
+
+#accsettings #frm, #accsettings #avafrm {
+	width: 100%;
+	align-self: center;
+}
+
+#achiev div {
+	width: 47%;
+	margin: 1%;
+}
+
+#achiev div>img+p {
+	width: 200%;
+}
+
+#achiev div>img+p:after {
+	left: 30%;
+}
+
+}
+
+/********************(до 600 пикселей)********************/
+@media all and (max-width: 600px) {
+
+#accsettings>div:first-child {
+	flex-flow: column wrap;
+}
+
+#accsettings>div:first-child>div {
+	text-align: center;
+	margin-left: 0;
+}
+
+#achiev div {
+	width: 30%;
+	margin: 1%;
+}
+
+#achiev div>img+p {
+	width: 200%;
+}
+
+#achiev div>img+p:after {
+	left:30%;
+}
+
+}

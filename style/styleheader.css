@@ -1,0 +1,188 @@
+header {
+	white-space: nowrap;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	align-items: center;
+	font-size: 1.5wmax;
+	color: #abccd1;
+	background: rgba(0, 0, 0, .5);
+	width: 100%;
+	backdrop-filter: blur(5px);
+	box-shadow: -1px 10px 10px rgba(0, 0, 0, .5);
+}
+	
+.logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50%;
+}	
+
+.trademark a {
+	text-decoration: none;
+	font-size: 1.5em;
+	background: url(../img/Bliss.jpg);
+	background-position: right;
+	background-size: cover;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: transparent;
+	/*text-shadow: 3px 3px 3px rgba(0, 0, 0, .5);*/
+	filter: drop-shadow(3px 3px 3px black);
+}
+
+.slogan {
+	text-shadow: 6px 6px 5px rgba(0, 0, 0, .5);
+}
+	
+.menu {
+	width: 50%;
+	display: inline-flex;
+	justify-content: center;
+	flex-flow: row wrap;
+	text-shadow: 6px 6px 5px rgba(0, 0, 0, .5);
+}
+
+.menu>a {
+	color: #abccd1;
+	text-decoration: none;
+}
+
+.menu .currentpage {
+	color: white;
+	text-decoration: underline;
+	text-shadow: none;
+	border-radius: 5px;
+}
+
+.menu>a {
+	border: 3px solid transparent;
+}
+
+.menu>a:hover {	
+	box-shadow: 3px 3px 3px black;
+	text-shadow: none;
+	border-radius: 5px;
+	border: 3px solid white;
+	background: rgba(156, 241, 252, .5);
+	color: white;
+}
+
+#userinfo {
+	color: white;
+	width: 100%;
+	text-align: center;
+}
+
+#userlogin {
+	text-decoration: none;
+	font-weight: 700;
+}
+
+#exit, #getinacc, #cabbutton, #adminpage, .mobilemenu {
+	display: none;
+	cursor: pointer;
+}
+
+
+/********************(от 1350 до 1500 пикселей)********************/
+@media all and ((max-width: 1500px) and (min-width: 1350px)) {
+
+	header {
+		font-size: 1.5vmax;
+	}
+
+	.trademark a {
+		font-size: 1.5em;
+	}
+
+	.slogan {
+		font-size: 1.5vmax;
+	}
+	
+	.menu {
+		width: 50%;
+	}
+}
+
+
+/********************(от 900 до 1350 пикселей)********************/
+@media all and ((max-width: 1350px) and (min-width: 900px)) {
+
+	header {
+		font-size: 2vmax;
+	}
+
+	.trademark a {
+		font-size: 2em;
+	}
+
+	
+	.menu {
+		width: 100%;
+	}
+}
+
+/********************(от 600 до 900 пикселей)********************/
+@media all and ((max-width: 900px) and (min-width: 600px)) {
+
+	header {
+		font-size: 2.5vmax;
+	}
+	
+	
+	.trademark a {
+		font-size: 2.5em;
+	}
+
+	.slogan {
+		font-size: 2.5vmax;
+	}
+	
+	.menu {
+		width: 100%;
+	}
+}
+
+/********************(до 600 пикселей)********************/
+@media all and (max-width: 700px) {
+
+	header {
+		font-size: 3vmax;
+	}
+		
+	.trademark a {
+		font-size: 2em;
+	}
+
+	.slogan, .menu {
+		display: none;
+	}
+	
+	.mobilemenu {	
+		border: 3px solid transparent;
+		border-radius: 5px;
+	}
+	
+	.mobilemenu:hover {
+		color: white;
+		border-color: white;
+	}
+	
+	.mobilemenu, .menu.mobilemenulinks {
+		display: inline-flex;
+	}
+	
+	.menu.mobilemenulinks {
+		width: 99%;
+		background: rgba(0, 0, 0, .4);
+		border-radius: 5px;
+	}
+	
+	.menu.mobilemenulinks a{
+		width: 100%;
+		text-align: center;
+	}
+
+}

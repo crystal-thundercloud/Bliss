@@ -1,0 +1,139 @@
+.zagolovok {
+	text-align: center;
+	font-size: 1.5vw;
+	width: 100%;
+	background: linear-gradient(rgba(255, 255, 255, .3), rgba(155, 206, 255, .3));
+	border-radius: 30px 30px 0px 0px;
+}
+
+.bread {
+	margin: 3% 2% 2% 2%;
+	text-align: left;
+	font-size: 1vw;
+	border-bottom: 1px solid #939393;
+}
+
+.bread>a:visited {
+	color: blue;
+}
+
+.zagolovok p {
+	margin: 2% 2% 0% 2%;
+	border-bottom: 2px solid black;
+}
+.lessons {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: space-around;
+	flex: 1;
+	width: 100%;
+	background: linear-gradient(rgba(155, 206, 255, .3), rgba(104, 255, 224, .5));
+	border-radius: 0px 0px 30px 30px;
+}
+
+.lessons a {
+	width: 95%;
+	margin: 1% 0%;
+	background: rgba(255, 255, 255, .5);
+	font-size: 1.5vw;
+	border: 5px solid white;
+	border-radius: 10px;
+	color: rgb(18, 82, 124);
+	text-decoration: none;
+	transition: all .3s;
+	box-shadow: 3px 3px 3px black;
+}
+
+.lessons a p {
+	margin: 2% 0% 2% 5%;
+}
+
+.lessons a p .lessonname {
+	text-decoration: underline;
+	font-weight: 700;
+}
+
+.lessons a:hover {
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, .6);
+	border-radius: 10px;
+}
+
+.lessons a:active {
+	filter: grayscale(50%);
+	background: rgba(0, 0, 0, .1);
+	color: white;
+	box-shadow: none;
+}
+
+.lessons > p {
+	text-align: center;
+	font-size: 1vw;
+	margin: 1%;
+}
+
+.finished {
+	position: relative;
+	background: rgba(170, 237, 174, .8) !important;
+}
+
+.finished:active {
+	background: rgba(100, 167, 104, .8) !important;
+}
+
+.finished::after {
+	content: '✓';
+	color: green;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+}
+
+/********************(от 1600 до 1700 пикселей)********************/
+@media all and ((max-width: 1700px) and (min-width: 1600px)) {
+	
+	.zagolovok, .lessons a {
+		font-size: 1.5vmax;
+	}
+	
+	.bread, .lessons > p {
+		font-size: 1vmax;
+	}
+}
+
+
+/********************(от 1100 до 1600 пикселей)********************/
+@media all and ((max-width: 1600px) and (min-width: 1100px)) {
+	
+	.zagolovok, .lessons a {
+		font-size: 2vmax;
+	}
+	
+	.bread, .lessons > p {
+		font-size: 1.5vmax;
+	}
+}
+
+/********************(от 600 до 1100 пикселей)********************/
+@media all and ((max-width: 1100px) and (min-width: 600px)) {
+
+	.zagolovok, .lessons a {
+		font-size: 2.5vmax;
+	}
+	
+	.bread, .lessons > p {
+		font-size: 2vmax;
+	}
+}
+
+/********************(до 600 пикселей)********************/
+@media all and (max-width: 600px) {
+
+	.zagolovok, .lessons a {
+		font-size: 3vmax;
+	}
+	
+	.bread, .lessons > p {
+		font-size: 2.5vmax;
+	}
+}

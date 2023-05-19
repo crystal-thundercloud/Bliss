@@ -1,0 +1,160 @@
+.content {
+	background: linear-gradient(rgba(255, 255, 255, .5), rgba(104, 207, 255, .5), rgba(104, 255, 224, .5));
+}
+
+.greet {
+	text-align: center;
+	width: 98%;
+	padding: 1%;
+	border-radius: 30px 30px 0px 0px;
+}
+
+.lessons1, .lessons2 {
+	display: flex;
+	flex-flow: column;
+	width: 100%;
+	justify-content: space-around;
+	padding-bottom: 2%;
+	flex: 1;
+}
+
+h2 {
+	width: 100%;
+	padding: 1% 0;
+	margin-top: 0;
+	text-align: center;
+	color: rgb(9, 79, 122);
+	background: rgba(255, 255, 255, .3);
+}
+
+.lessons1 > p, .lessons2 > p {
+	font-size: 2vmax;
+	color: rgb(9, 79, 122);
+}
+
+.lessons1 > div, .lessons2 > div {
+	display: inline-flex;
+	justify-content: space-around;
+}
+
+.lessons1 > div > div, .lessons2 > div > div {
+	display: inline-flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	background: rgba(255, 255, 255, .5);
+	border: 5px solid white;
+	border-radius: 15%;
+	box-shadow: 3px 3px 3px black;
+	width: 20%;
+	min-width: 90px;
+	transition: all .3s;
+}
+
+.lessons1 > div > div > a, .lessons2 > div > div > a {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+}
+
+.lessons1 > div > div > a img, .lessons2 > div > div > a img {
+	width: 90%;
+}
+
+.lessons1 div div a p, .lessons2 div div a p {
+	text-align: center;
+	font-size: 1.5vmax;
+	margin: -1% 0% 0% 0%;
+}
+
+.content a {
+	color: rgb(18, 82, 124);
+	text-decoration: none;
+}
+
+#userlogin {
+	color: white;
+}
+
+.lessons1 > div > div:hover, .lessons2 > div > div:hover {
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, .6);
+	border-radius: 15%;
+}
+
+.lessons1 > div > div:active, .lessons2 > div > div:active {
+	filter: grayscale(50%);
+	background: rgba(0, 0, 0, .1);
+	color: white;
+	box-shadow: none;
+}
+
+.afterword {
+	text-align: center;
+	width: 98%;
+	padding: 0 1% 1% 1%;
+	border-radius: 0px 0px 30px 30px;
+	border-top: 5px dotted white;
+}
+
+/********************(от 1000 до 1500 пикселей)********************/
+@media all and ((max-width: 1500px) and (min-width: 1350px)) {
+
+	.lessons1 div div a p, .lessons2 div div a p {
+		font-size: 1.5vmax;
+	}
+	
+	.lessons1 > div > div, .lessons2 > div > div {
+		width: 20%;
+	}
+	
+	.lessons1 > p, .lessons2 > p {
+		font-size: 2vmax;
+	}
+}
+
+/********************(от 1000 до 1350 пикселей)********************/
+@media all and ((max-width: 1350px) and (min-width: 1000px)) {
+	
+	.lessons1 div div a p, .lessons2 div div a p {
+		font-size: 2.5vmax;
+	}
+	
+	.lessons1 > div > div, .lessons2 > div > div {
+		width: 25%;
+	}
+	
+	.lessons1 > p, .lessons2 > p {
+		font-size: 3vmax;
+	}
+}
+
+/********************(от 600 до 1000 пикселей)********************/
+@media all and ((max-width: 1000px) and (min-width: 600px)) {
+		
+	.lessons1 div div a p, .lessons2 div div a p {
+		font-size: 2.5vmax;
+	}
+	
+	.lessons1 > div > div, .lessons2 > div > div {
+		width: 30%;
+	}
+	
+	.lessons1 > p, .lessons2 > p {
+		font-size: 3.3vmax;
+	}
+}
+
+/********************(до 600 пикселей)********************/
+@media all and (max-width: 600px) {
+
+	.lessons1 div div a p, .lessons2 div div a p {
+		font-size: 2.5vmax;
+	}
+	
+	.lessons1 > div > div, .lessons2 > div > div {
+		width: 30%;
+	}
+	
+	.lessons1 > p, .lessons2 > p {
+		font-size: 3.5vmax;
+	}
+}

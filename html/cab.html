@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/style1.css">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/stylelog.css">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/styleheader.css">
+		<link rel="stylesheet" type="text/css" href="http://bliss/style/popup.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<title>Личный кабинет - Bliss: онлайн школа языков программирования</title>
+	</head>
+	
+	<body>
+		<header>
+			<div class="logo">
+				<div class="trademark">
+					<a href="http://bliss/index.html">Bliss</a>
+				</div>
+				
+				<div class="slogan">
+					— <i>безмятежное обучение программированию</i>
+				</div>
+			</div>
+			
+			<div class="mobilemenu" tabindex="1"><a>/Меню/</a></div>
+			
+			<div class="menu">
+				<a href="http://bliss/index.html">/О нас/</a>
+				<a href="http://bliss/html/courses.html">/Курсы/</a>
+				<a href="http://bliss/html/contacts.html">/Контакты/</a>
+				<a href="http://bliss/html/log.html" id="getinacc">/Войти/</a>
+				<a href="http://bliss/html/cab.html" id="cabbutton" class="currentpage">/Личный кабинет/</a>
+				<a href="http://bliss/html/adminpage.html" id="adminpage">/Управление/</a>
+				<a href="#" id="exit">/Выйти/</a>
+			</div>
+			
+			<script src="http://bliss/js/mobilemenu.js"></script>
+			<script src="http://bliss/js/scriptforbuttons.js"></script>
+			
+		</header>
+		
+		<div class="maincontainer">
+				<div id="popup" class="popup">
+					<div id="innermessage">
+						<p id="msg"></p>
+						<input type="button" id="btn" value="Ok">
+					</div>
+				</div>
+				<div id="avapopup" class="popup">
+					<div class="inner">
+						<div id="avapg1" class="avapg">
+									<img id="ava04" class="ava" tabindex="1"  src="http://bliss/img/avatars/амуму.png">
+									<img id="ava05" class="ava" tabindex="1"  src="http://bliss/img/avatars/ари.png">
+									<img id="ava06" class="ava" tabindex="1"  src="http://bliss/img/avatars/блитцкранк.png">
+									<img id="ava07" class="ava" tabindex="1"  src="http://bliss/img/avatars/вай.png">
+									<img id="ava08" class="ava" tabindex="1"  src="http://bliss/img/avatars/велкоз.png">
+									<img id="ava09" class="ava" tabindex="1"  src="http://bliss/img/avatars/владимир.png">
+									<img id="ava10" class="ava" tabindex="1"  src="http://bliss/img/avatars/волибир.png">
+									<img id="ava11" class="ava" tabindex="1"  src="http://bliss/img/avatars/гангпланк.png">
+									<img id="ava12" class="ava" tabindex="1"  src="http://bliss/img/avatars/грагас.png">
+									<img id="ava13" class="ava" tabindex="1"  src="http://bliss/img/avatars/грейвз.png">
+									<img id="ava14" class="ava" tabindex="1"  src="http://bliss/img/avatars/дариус.png">
+									<img id="ava15" class="ava" tabindex="1"  src="http://bliss/img/avatars/джарван4.png">
+									<img id="ava16" class="ava" tabindex="1"  src="http://bliss/img/avatars/джинкс.png">
+									<img id="ava17" class="ava" tabindex="1"  src="http://bliss/img/avatars/доктормундо.png">
+									<img id="ava18" class="ava" tabindex="1"  src="http://bliss/img/avatars/дрейвен.png">
+									<img id="ava19" class="ava" tabindex="1"  src="http://bliss/img/avatars/жанна.png">
+									<img id="ava20" class="ava" tabindex="1"  src="http://bliss/img/avatars/зед.png">
+									<img id="ava21" class="ava" tabindex="1"  src="http://bliss/img/avatars/зиггс.png">
+									<img id="ava22" class="ava" tabindex="1"  src="http://bliss/img/avatars/картус.png">
+									<img id="ava23" class="ava" tabindex="1"  src="http://bliss/img/avatars/кейтлин.png">
+									<img id="ava24" class="ava" tabindex="1"  src="http://bliss/img/avatars/корки.png">
+									<img id="ava25" class="ava" tabindex="1"  src="http://bliss/img/avatars/ксинжао.png">
+									<img id="ava26" class="ava" tabindex="1"  src="http://bliss/img/avatars/леона.png">
+									<img id="ava27" class="ava" tabindex="1"  src="http://bliss/img/avatars/лисин.png">
+									<img id="ava28" class="ava" tabindex="1"  src="http://bliss/img/avatars/лулу.png">
+									<img id="ava29" class="ava" tabindex="1"  src="http://bliss/img/avatars/люкс.png">
+									<img id="ava30" class="ava" tabindex="1"  src="http://bliss/img/avatars/люциан.png">
+									<img id="ava31" class="ava" tabindex="1"  src="http://bliss/img/avatars/мальфит.png">
+									<img id="ava32" class="ava" tabindex="1"  src="http://bliss/img/avatars/мастерйи.png">
+									<img id="ava33" class="ava" tabindex="1"  src="http://bliss/img/avatars/миссфортуна.png">
+								</div>
+								<div id="avapg2" class="avapg">
+									<img id="ava34" class="ava" tabindex="1"  src="http://bliss/img/avatars/моргана.png">
+									<img id="ava35" class="ava" tabindex="1"  src="http://bliss/img/avatars/мордекайзер.png">
+									<img id="ava36" class="ava" tabindex="1"  src="http://bliss/img/avatars/нами.png">
+									<img id="ava37" class="ava" tabindex="1"  src="http://bliss/img/avatars/насус.png">
+									<img id="ava38" class="ava" tabindex="1"  src="http://bliss/img/avatars/нидали.png">
+									<img id="ava39" class="ava" tabindex="1"  src="http://bliss/img/avatars/райз.png">
+									<img id="ava40" class="ava" tabindex="1"  src="http://bliss/img/avatars/рамбл.png">
+									<img id="ava41" class="ava" tabindex="1"  src="http://bliss/img/avatars/раммус.png">
+									<img id="ava42" class="ava" tabindex="1"  src="http://bliss/img/avatars/ренгар.png">
+									<img id="ava43" class="ava" tabindex="1"  src="http://bliss/img/avatars/ренектон.png">
+									<img id="ava44" class="ava" tabindex="1"  src="http://bliss/img/avatars/ривен.png">
+									<img id="ava45" class="ava" tabindex="1"  src="http://bliss/img/avatars/седжуани.png">
+									<img id="ava46" class="ava" tabindex="1"  src="http://bliss/img/avatars/скарнер.png">
+									<img id="ava47" class="ava" tabindex="1"  src="http://bliss/img/avatars/сона.png">
+									<img id="ava48" class="ava" tabindex="1"  src="http://bliss/img/avatars/сорака.png">
+									<img id="ava49" class="ava" tabindex="1"  src="http://bliss/img/avatars/тарик.png">
+									<img id="ava50" class="ava" tabindex="1"  src="http://bliss/img/avatars/твистедфейт.png">
+									<img id="ava51" class="ava" tabindex="1"  src="http://bliss/img/avatars/тимо.png">
+									<img id="ava52" class="ava" tabindex="1"  src="http://bliss/img/avatars/треш.png">
+									<img id="ava53" class="ava" tabindex="1"  src="http://bliss/img/avatars/триндамир.png">
+									<img id="ava54" class="ava" tabindex="1"  src="http://bliss/img/avatars/хеймердингер.png">
+									<img id="ava55" class="ava" tabindex="1"  src="http://bliss/img/avatars/шако.png">
+									<img id="ava56" class="ava" tabindex="1"  src="http://bliss/img/avatars/эзреаль.png">
+									<img id="ava57" class="ava" tabindex="1"  src="http://bliss/img/avatars/энни.png">
+									<img id="ava58" class="ava" tabindex="1"  src="http://bliss/img/avatars/эш.png">
+									<img id="ava59" class="ava" tabindex="1"  src="http://bliss/img/avatars/ясуо.png">
+									<img id="ava01" class="ava" tabindex="1"  src="http://bliss/img/avatars/1поро.png">
+									<img id="ava02" class="ava" tabindex="1"  src="http://bliss/img/avatars/2поро.png">
+									<img id="ava03" class="ava" tabindex="1"  src="http://bliss/img/avatars/3поро.jpg">
+									<img id="ava60" class="ava" tabindex="1"  src="http://bliss/img/avatars/base.png">
+								</div>
+								<input type="button" id="avapg1btn" value="Страница 2 &gt;">
+								<input type="button" id="avapg2btn" value="&lt; Страница 1">
+								<input type="button" id="confirmava" value="Подтвердить выбор">
+								<input type="button" id="canselava" value="Отменить выбор">
+					</div>
+				</div>
+						
+			<div class="content">
+				
+				<h1 name="username" id="username"></h1>
+				
+				<script src="http://bliss/js/getuserlogin.js"></script>
+				
+				<div id="accsettings">
+					<div>
+						<div>
+							<center>
+								<img id="ava" alt="Аватар">
+								
+								<div>Достижения:
+									<div id="achiev"></div>
+								</div>	
+							</center>
+						</div>
+						<div>
+							<p>
+								<text id="userinfocab"></text><br>
+								Роль: <text id="role"></text><br>
+							</p>
+						</div>
+					</div>
+					
+					
+					<script src="http://bliss/js/userinfo.js"></script>
+					
+					<div>
+						<form method="post" name="avafrm" id="avafrm" enctype="multipart/form-data">
+							
+						<h3>Аватар</h3>
+							
+							
+							<input type="button" id="selectava" value="Выбрать готовый аватар">
+							<label for="fileava">Загрузить другой аватар:</label>
+								<input type="hidden" id="avafromlist" name="avafromlist">
+								<input type="file" id="fileava" name="fileava" accept="image/*">
+								<span id="s0"></span>
+							<input type="submit" value="Сохранить аватар" name="sendava" id="sendava">
+							<input type="submit" value="Очистить выбор аватара" name="clearava" id="clearava">
+						</form>
+						
+						
+						
+						<form method="post" name="frm" id="frm">
+						<h3>Изменить пароль</h3>
+							<label for="pass">Старый пароль:</label>
+								<input type="password" name="pass" id="pass" pattern="(?=.{8,}$)(?=.*[\d])(?=.*[A-zА-яЁё])(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).*" minlength="8" maxlength="20" required>
+								<span id="s1"></span>
+							<label for="pass1">Новый пароль:</label>
+								<input type="password" name="pass1" id="pass1" pattern="(?=.{8,}$)(?=.*[\d])(?=.*[A-zА-яЁё])(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).*" minlength="8" maxlength="20" required>
+								<span id="s2"></span>
+							<label for="pass2">Повторите новый пароль:</label>
+								<input type="password" name="pass2" id="pass2" pattern="(?=.{8,}$)(?=.*[\d])(?=.*[A-zА-яЁё])(?=.*[a-zа-яё])(?=.*[A-ZА-ЯЁ]).*" minlength="8" maxlength="20" required>
+								<span id="s3"></span>
+							<input type="submit" value="Сохранить новый пароль" name="send" id="send">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+		
+			pasreg = /(?=.{8,}$)(?=.*[\d])(?=.*[A-zА-яЁё])(?=.*[A-ZА-ЯЁ]).*/;
+			
+			var popup = document.querySelector("#popup");
+			var msg = document.querySelector("#msg");
+			var btn = document.querySelector("#btn");
+			
+			var avafrm = document.querySelector("#avafrm");
+			var selectava = document.querySelector("#selectava");
+			var fileava = document.querySelector("#fileava");
+			var sendava = document.querySelector("#sendava");
+			var avapopup = document.querySelector("#avapopup");
+			var avafromlist = document.querySelector("#avafromlist");
+			var avalist = document.querySelectorAll(".ava");
+			var avapg1 = document.querySelector("#avapg1");
+			var avapg2 = document.querySelector("#avapg2");
+			var avapg1btn = document.querySelector("#avapg1btn");
+			var avapg2btn = document.querySelector("#avapg2btn");
+			var confirmava = document.querySelector("#confirmava");
+			var canselava = document.querySelector("#canselava");
+			var clearava = document.querySelector("#clearava");
+			
+			var frm = document.querySelector("#frm");
+			var oldpass = document.querySelector("#pass");
+			var newpass = document.querySelector("#pass1");
+			var newpass2 = document.querySelector("#pass2");
+
+			var send = document.querySelector("#send");
+			
+			var s0 = document.querySelector("#s0");
+			var s1 = document.querySelector("#s1");
+			var s2 = document.querySelector("#s2");
+			var s3 = document.querySelector("#s3");
+			
+			//Убираем всплываюшее окошко с тайтлом для поля загрузки файла
+			avafrm.addEventListener('invalid', nobubble(fileava), true);
+			
+			//Стираем сообщение об успешном сохранении предыдущего аватара, проверяем корректность загруженного файла
+			fileava.addEventListener("change", function() {
+				s0.style.color = "rgb(100, 193, 102)";
+				s0.innerHTML="Не забудьте сохранить выбранный аватар!";
+				confirmava.scrollIntoView({block: "start", behavior: "smooth"});});
+			
+			fileava.addEventListener("change", checkava);
+			
+			//По кнопке открываем всплывающее окно выбора аватара и прокручиваем страницу до его верха
+			selectava.addEventListener("click", function() {
+				avapopup.style.display="flex";
+				avapopup.scrollIntoView({block: "start", behavior: "smooth"});
+			});
+			
+			//При подтверждении выбора закрываем окно и возвращаем прокрутку документа, если аватар выбран - напоминаем его сохранить
+			confirmava.addEventListener("click", function() {
+				avapopup.style.display="none";
+				if (avafromlist.value!='') {
+					sendava.scrollIntoView({block: "start", behavior: "smooth"});
+					s0.style.color = "rgb(100, 193, 102)";
+					s0.innerHTML="Не забудьте сохранить выбранный аватар!";
+				}
+			});
+			
+			//При отмене выбора закрываем окно, возвращаем прокрутку, очищаем напоминание о сохранении аватара
+			canselava.addEventListener("click", function() {
+				avapopup.style.display="none";
+				document.body.style.overflowY="";
+				avafromlist.value='';
+				s0.innerHTML = '';
+			});
+			
+			//Кнопка на первой странице выбора - переключение вперёд и скрытие этой кнопки
+			avapg1btn.addEventListener("click", function() {
+				avapg1.style.display="none";
+				avapg1btn.style.display="none";
+				avapg2btn.style.display="block";
+				avapg2.style.display="flex";
+			});
+			
+			//Кнопка на второй странице выбора - переключение назад и скрытие этой кнопки
+			avapg2btn.addEventListener("click", function() {
+				avapg2.style.display="none";
+				avapg2btn.style.display="none";
+				avapg1btn.style.display="block";
+				avapg1.style.display="flex";
+			});
+			
+			//Кнопка полной очистки формы выбора аватара - как файла, так и аватара из списка
+			clearava.addEventListener("click", function() {
+				avafrm.reset();
+				avafromlist.value='';
+				s0.innerHTML = '';
+				fileava.setCustomValidity("");
+			});
+			
+			//Ajax-запрос на загрузку аватара будет отправляться при нажатии кноки "сохранить аватар"
+			sendava.addEventListener("click", uploadava);
+			
+			//Закрытие всплывающего окна об успешном изменении пароля и очистка формы
+			btn.addEventListener("click", function() {popup.style.display="none"; frm.reset()});
+			
+			oldpass.addEventListener("change", oldpasscheck);
+			newpass.addEventListener("change", passmatch);
+			newpass.addEventListener("change", validation2);
+			newpass2.addEventListener("change", passmatch);
+			newpass2.addEventListener("change", validation2);
+			send.addEventListener("click", oldpasscheck);
+			send.addEventListener("click", validation2);
+			send.addEventListener("click", passmatch);
+			send.addEventListener("click", passchange);
+			send.addEventListener("click", setandunset);
+			
+			
+			//Для правильной работы ajax-запросов убираем стандартные события форм при отправке (очистка, перезагрузка страницы)
+			avafrm.addEventListener("submit", function(e) { e.preventDefault();});
+			frm.addEventListener("submit", function(e) { e.preventDefault();});
+			
+			//Функция для сверки старого пароля с записанным в БД
+			var passcor = "";
+			
+			function oldpasscheck() {
+				var ajpasshceck = $.ajax({
+					url: "http://bliss/php/passcheckcookie.php",
+					type: "POST",
+					data: $('form').serialize(),
+					dataType: "text",
+				})
+				
+				ajpasshceck.done(function(response) {
+					passcor = response;
+					
+					if (oldpass.value=="" || oldpass.value=="NULL" || oldpass.value==0) {
+						oldpass.setCustomValidity('Введите старый пароль');
+						oldpass.style.borderColor = "rgb(249, 139, 139)";
+						oldpass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s1.innerHTML = "Введите старый пароль";
+					}
+						
+					else if (pasreg.test(oldpass.value)==false){ 
+						oldpass.setCustomValidity('Неверный формат пароля');
+						oldpass.style.borderColor = "rgb(249, 139, 139)";
+						oldpass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s1.innerHTML = "Неверный формат пароля";
+					}
+						
+					else if (passcor=="Неверный пароль!") {
+						oldpass.setCustomValidity('Неверный пароль!');
+						oldpass.style.borderColor = "rgb(249, 139, 139)";
+						oldpass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+						s1.innerHTML = passcor;
+					}
+						
+					else { 
+						oldpass.setCustomValidity('');
+						oldpass.style.borderColor = "rgb(116, 252, 118)";
+						oldpass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(116, 252, 118, .5))";
+						s1.innerHTML = "";
+					}
+					
+				})
+				
+			}
+			
+			//Функция, распределяющая удаление тайтлов по полям формы изменения пароля
+			function setandunset() {
+				switch (true) {
+					case !oldpass.validity.valid:
+						frm.addEventListener('invalid', nobubble(oldpass), true);
+						frm.removeEventListener('invalid', nobubble(newpass), true);
+						frm.removeEventListener('invalid', nobubble(newpass2), true);
+						break;
+					case oldpass.validity.valid&&!newpass.validity.valid:
+						frm.removeEventListener('invalid', nobubble(oldpass), true);
+						frm.addEventListener('invalid', nobubble(newpass), true);
+						frm.removeEventListener('invalid', nobubble(newpass2), true);
+						break;
+					case oldpass.validity.valid&&newpass.validity.valid&&!newpass2.validity.valid:
+						frm.removeEventListener('invalid', nobubble(oldpass), true);
+						frm.removeEventListener('invalid', nobubble(newpass), true);
+						frm.addEventListener('invalid', nobubble(newpass2), true);
+						break;
+					case oldpass.validity.valid&&newpass.validity.valid&&newpass2.validity.valid:
+						frm.removeEventListener('invalid', nobubble(oldpass), true);
+						frm.removeEventListener('invalid', nobubble(newpass), true);
+						frm.removeEventListener('invalid', nobubble(newpass2), true);
+						break;
+				}
+			}
+			
+			//Проверка верности записи нового пароля
+			function passmatch() {
+				if (!oldpass.validity.valid) {
+					newpass.setCustomValidity('Сначала правильно введите старый пароль');
+					newpass.style.borderColor = "rgb(249, 139, 139)";
+					newpass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s2.innerHTML = "Сначала правильно введите старый пароль";
+				}
+				
+				else if (newpass.value=="" || newpass.value=="NULL" || newpass.value==0) {
+					newpass.setCustomValidity('Введите новый пароль');
+					newpass.style.borderColor = "rgb(249, 139, 139)";
+					newpass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s2.innerHTML = "Введите новый пароль";
+				}
+				
+				else if (pasreg.test(newpass.value)==false){
+					newpass.setCustomValidity('Пароль должен содержать от 8 символов; <br> Одну заглавную и строчную букву; <br> Одну цифру.');
+					newpass.style.borderColor = "rgb(249, 139, 139)";
+					newpass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s2.innerHTML = "Пароль должен содержать от 8 символов; <br> Одну заглавную и строчную букву; <br> Одну цифру.";
+				}
+				
+				else if (newpass.value==oldpass.value) {
+					newpass.setCustomValidity('Новый пароль совпадает со старым!');
+					newpass.style.borderColor = "rgb(249, 139, 139)";
+					newpass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s2.innerHTML = "Новый пароль совпадает со старым!";
+				}
+						
+				else { 
+					newpass.setCustomValidity('');
+					newpass.style.borderColor = "rgb(116, 252, 118)";
+					newpass.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(116, 252, 118, .5))";
+					s2.innerHTML = "";
+				}
+			}
+			
+			//Сравнение введённого нового пароля и его повтора
+			function validation2() {
+				if (!oldpass.validity.valid) {
+					newpass2.setCustomValidity('Сначала правильно введите старый пароль');
+					newpass2.style.borderColor = "rgb(249, 139, 139)";
+					newpass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s3.innerHTML = "Сначала правильно введите старый пароль";
+				}
+				
+				else if (!newpass.validity.valid) {
+					newpass2.setCustomValidity('Сначала правильно введите новый пароль');
+					newpass2.style.borderColor = "rgb(249, 139, 139)";
+					newpass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s3.innerHTML = "Сначала правильно введите новый пароль";
+				}
+				
+				else if (newpass2.value=="" || newpass2.value=="NULL" || newpass2.value==0) {
+					newpass2.setCustomValidity('Повторите новый пароль');
+					newpass2.style.borderColor = "rgb(249, 139, 139)";
+					newpass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s3.innerHTML = "Повторите новый пароль";
+				}
+				
+				else if (newpass2.value!=newpass.value) {
+					newpass2.setCustomValidity('Пароли не совпадают');
+					newpass2.style.borderColor = "rgb(249, 139, 139)";
+					newpass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(249, 139, 139, .5))";
+					s3.innerHTML = "Пароли не совпадают";
+				}
+				
+				else { 
+					newpass2.setCustomValidity('');
+					newpass2.style.borderColor = "rgb(116, 252, 118)";
+					newpass2.style.background = "linear-gradient(rgba(255, 255, 255, .5), rgba(116, 252, 118, .5))";
+					s3.innerHTML = "";
+				}
+			}
+			
+			//Если старый пароль верен, а новые прошли валидацию - ajax-запрос на изменение пароля пользователя
+			function passchange() {
+				if (oldpass.validity.valid&&newpass.validity.valid&&newpass2.validity.valid) {
+					var ajpasschange = $.ajax({
+						url: "http://bliss/php/passchange.php",
+						type: "POST",
+						data: $('form').serialize(),
+						dataType: "text",
+					})
+					
+					ajpasschange.done(function(response) {
+						msg.innerHTML = response;
+						popup.style.display = "flex";
+						btn.style.display = "block";
+						popup.scrollIntoView({block: "start", behavior: "smooth"});
+					})
+				}
+			}
+			
+			//Функция проверки загруженного изображения
+			function checkava() {
+				var filetp = fileava.files[0].type;
+					
+				if (fileava.files[0].size > (3*1024*1024)) {
+					fileava.setCustomValidity("Размер файла превышает 3 мб!");
+					s0.innerHTML = "Размер файла превышает 3 мб!";
+					s0.style.color = "rgb(181, 59, 59)";
+				}
+					
+				else if (filetp!='image/bmp'&&filetp!='image/gif'&&filetp!='image/jpeg'&&filetp!='image/png') {
+					fileava.setCustomValidity("Выбрано не изображение!");
+					s0.innerHTML = "Выбрано не изображение!";
+					s0.style.color = "rgb(181, 59, 59)";
+				}
+				
+				else {
+					fileava.setCustomValidity("");
+					s0.style.color = "rgb(100, 193, 102)";
+					s0.innerHTML = "Не забудьте сохранить выбранный аватар!";
+					confirmava.scrollIntoView({block: "start", behavior: "smooth"});
+				}
+			}
+			
+			//Ajax-запрос на загрузку аватара в бд
+			function uploadava() {
+				var fd = new FormData(avafrm);
+				
+				//Если не выбран аватар из списка и файл
+				if ((fileava.files[0]==undefined)&&(avafromlist.value=='')) {
+					s0.innerHTML = "Вы не выбрали файл или аватар из списка!";
+					s0.style.color = "rgb(181, 59, 59)";
+				}
+				
+				//Если выбран файл (также работает, если выбрать аватар из списка и файл одновременно)
+				else if (fileava.files[0]!=undefined&&fileava.validity.valid) {
+				
+					var filetp = fileava.files[0].type;
+					
+					s0.style.color = "rgb(100, 193, 102)";
+						s0.innerHTML = "Ожидание ответа от сервера...";
+						var ajuploadava = $.ajax({
+							url: "http://bliss/php/loadava.php",
+							type: "POST",
+							data: fd,
+							processData: false,
+							contentType: false,
+							dataType: "text"
+						})
+						
+					ajuploadava.done(function(response) {
+						s0.innerHTML = response;
+						if (response == 'Файл не выбран' || response == 'Размер файла превышает 3 мб!') {
+							fileava.setCustomValidity(response);
+							s0.style.color = "rgb(181, 59, 59)";
+						}
+							
+						else if (response == 'Аватар успешно загружен') {
+							s0.innerHTML+='. Перезагрузка страницы...';
+							fileava.setCustomValidity('');
+							s0.style.color = "rgb(100, 193, 102)";
+							avafrm.reset();
+							setTimeout(rld, 900);
+						}
+							
+						else {
+							fileava.setCustomValidity('');
+							s0.style.color = "rgb(181, 59, 59)";
+						}
+					})
+				}
+				
+				else if (avafromlist.value!='') {
+					s0.innerHTML = "Ожидание ответа от сервера...";
+					var ajavafromlist = $.ajax({
+						url: "http://bliss/php/avafromlisttodb.php",
+						type: "POST",
+						data: fd,
+						processData: false,
+						contentType: false,
+						dataType: "text"
+					})
+						
+					ajavafromlist.done(function(response) {
+						s0.innerHTML = response;
+						
+						if (response == 'Аватар успешно загружен') {
+							s0.innerHTML+='. Перезагрузка страницы...';
+							fileava.setCustomValidity('');
+							s0.style.color = "rgb(100, 193, 102)";
+							avafrm.reset();
+							setTimeout(rld, 900);
+						}
+							
+						else {
+							s0.style.color = "rgb(181, 59, 59)";
+						}
+					})
+				}
+			}
+			
+			//Вспомогательная функция перезагрузки страницы
+			function rld() {
+				window.location.reload();
+			}
+			
+			//Функции добавления и удаления рамок и получения файла выбранного аватара
+			var lng = avalist.length;
+			
+			function brd() {
+				this.focus();
+				this.style.border = "2px double yellow";
+				avafromlist.value = this.getAttribute('src');
+			}
+			
+			function unbrd() {
+				this.blur();
+				this.style.border = "2px solid black";
+			}
+			
+			for (var i = 0; i<lng, elem = avalist[i]; i++) {
+				elem.addEventListener("focus", brd);
+				elem.addEventListener("blur", unbrd);
+			}
+			
+		</script>
+	</body>
+</html>
